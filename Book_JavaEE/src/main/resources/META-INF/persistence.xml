@@ -20,9 +20,8 @@
 	</persistence-unit>
 	<!-- /AppServer -->
 	
-	<!-- jUnit --
+	<!-- jUnit
 	<persistence-unit name="bankPU">
-
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>ch.hevs.businessobject.Client</class>
 		<class>ch.hevs.businessobject.Address</class>
@@ -45,6 +44,6 @@
 		</properties>
 
 	</persistence-unit>
-	<!-- /jUnit -->
+     /jUnit -->
 	
 </persistence>
