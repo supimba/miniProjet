@@ -24,7 +24,7 @@ public class Client {
 	private String firstname;
 
 	// relations
-	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)//@JoinColumn(name = "FK_CLIENT")
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL) //@JoinColumn(name = "FK_CLIENT")
 	private List<Account> accounts;
 	
 	
