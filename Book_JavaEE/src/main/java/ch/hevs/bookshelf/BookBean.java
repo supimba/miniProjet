@@ -10,5 +10,7 @@ public class BookBean {
 	
 	@PersistenceContext(type=PersistenceContextType.EXTENDED, name = "BookPU")
 	private EntityManager em; 
+	
+	
 
 }
