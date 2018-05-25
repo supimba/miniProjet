@@ -18,9 +18,30 @@
 
 		</properties>
 	</persistence-unit>
+	
+	<!--  decomment
+		<persistence-unit name="bookPU">
+		<jta-data-source>java:/labsDS</jta-data-source>
+		
+		<class>ch.hevs.businessobject.Book</class>
+		<class>ch.hevs.businessobject.Writer</class>
+		<class>ch.hevs.businessobject.Category</class>
+		<class>ch.hevs.businessobject.Address</class>
+		
+		<properties>
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" /> 
+			<property name="dialect" value="org.hibernate.dialect.HSQLDialect"/>
+
+		</properties>
+	</persistence-unit>
+	
+	 -->
+	
+	
 	<!-- /AppServer -->
 	
-	<!-- jUnit
+	<!-- jUnit  -->
 	<persistence-unit name="bankPU">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>ch.hevs.businessobject.Client</class>
@@ -44,6 +65,5 @@
 		</properties>
 
 	</persistence-unit>
-     /jUnit -->
 	
 </persistence>
