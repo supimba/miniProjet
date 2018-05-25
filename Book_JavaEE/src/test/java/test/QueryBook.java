@@ -12,7 +12,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import org.junit.Test;
+
 
 import ch.hevs.businessobject.Address;
 import ch.hevs.businessobject.Book;
@@ -45,7 +45,7 @@ public class QueryBook {
 		}
 	}
 	
-	@Test
+	//@Test
 	private static void executeRequest() {
 		List result = null;
 		EntityTransaction tx = null;
