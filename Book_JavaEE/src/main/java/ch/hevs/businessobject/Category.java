@@ -33,7 +33,7 @@ public class Category {
 	public Category(){
 		
 	}
-	public Category(long id, String nameCategory, String type) {
+	public Category(String nameCategory, String type) {
 		this.nameCategory = nameCategory;
 		this.type = type;
 	}

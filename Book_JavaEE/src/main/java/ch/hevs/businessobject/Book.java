@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,7 +37,8 @@ public class Book {
 	
 
 	// relations
-	@OneToMany(mappedBy = "book")
+	
+	@ManyToMany(cascade = CascadeType.ALL)
 	private List<Writer> writers;
 	@OneToMany(mappedBy = "book")
 	private List<Category> categories;
@@ -178,6 +180,11 @@ public class Book {
 	 */
 	public void addWriter(Writer writer){
 		this.writers.add(writer);
+		
+		// helpers method
+		List<Book> books = writer.getBooks(); 
+		books.add(this);
+//		writer.setBook(this);
 	}
 	
 	/**
@@ -191,6 +198,15 @@ public class Book {
 			if (w.getId() == writer.getId())
 				writers.remove(w); 
 		}
+		
+		this.writers.remove(writer); 
+		
+		// helpers method
+		List<Book> books = writer.getBooks(); 
+		for(Book b: books)
+			if(b.getId() == this.getId())
+				books.remove(b); 
+		
 	}
 	
 	/**

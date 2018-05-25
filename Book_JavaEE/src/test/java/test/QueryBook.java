@@ -16,11 +16,12 @@ import org.junit.Test;
 
 import ch.hevs.businessobject.Address;
 import ch.hevs.businessobject.Book;
+import ch.hevs.businessobject.Category;
 import ch.hevs.businessobject.Client;
 import ch.hevs.businessobject.Writer;
 
 public class QueryBook {
-	@Test
+	
 	public void test() {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -36,15 +37,16 @@ public class QueryBook {
 					System.out.println("The End");
 					break;
 				} else {
-					executeRequest(cmd);
+					//executeRequest(cmd);
 				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-
-	private static void executeRequest(String cmd) {
+	
+	@Test
+	private static void executeRequest() {
 		List result = null;
 		EntityTransaction tx = null;
 		try {
@@ -54,7 +56,7 @@ public class QueryBook {
 			EntityManager em = emf.createEntityManager();
 			tx = em.getTransaction();
 			tx.begin();
-			result = em.createQuery(cmd).getResultList();
+		//	result = em.createQuery(cmd).getResultList();
 			Iterator it = result.iterator();
 			while (it.hasNext()) {
 				System.out.println(it.next());
@@ -91,6 +93,7 @@ public class QueryBook {
 
 			Writer w1 = new Writer("Baudelaire", "Charles", "homme", new Date(1980, 8, 31), "Charles Baudelaire est un poète français. Né à Paris le 9 avril 1821, il meurt dans la même ville le 31 août 1867 (à 46 ans).");
 			b1.addWriter(w1);
+			//Category c1 = new Category(nameCategory, type)
 		
 			
 			
