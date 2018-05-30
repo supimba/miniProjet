@@ -8,6 +8,16 @@ public class Address {
 	private String postalCode;
 	private String street;
 	private String city;
+		
+	// constructors
+	public Address(){
+		
+	}
+	public Address(String postalCode, String street, String city) {
+		this.postalCode = postalCode;
+		this.street = street;
+		this.city = city;
+	}
 	
 	public String getPostalCode() {
 		return postalCode;
@@ -27,16 +37,6 @@ public class Address {
 		return city;
 	}
 	public void setCity(String city) {
-		this.city = city;
-	}
-	
-	// constructors
-	public Address(){
-		
-	}
-	public Address(String postalCode, String street, String city) {
-		this.postalCode = postalCode;
-		this.street = street;
 		this.city = city;
 	}
 	

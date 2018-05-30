@@ -35,6 +35,7 @@ public class AppBookBean
 		this.books = bookShelf.getBooks();
 		this.writers = bookShelf.getWriters();
 		this.categories = bookShelf.getCategories();
+		this.populate();
     }
 
 	public List<Book> getBooks() {
@@ -64,9 +65,9 @@ public class AppBookBean
 	public BookShelf getBookShelf() {
 		return bookShelf;
 	}
-    
-    
-    
-    
+   
+	public void populate(){
+		bookShelf.populate();
+	}
     
 }

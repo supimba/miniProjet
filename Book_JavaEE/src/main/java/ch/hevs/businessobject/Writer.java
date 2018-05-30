@@ -12,10 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
+import javax.persistence.Temporal;
 
 
 /**
@@ -36,6 +34,7 @@ public class Writer {
 	@Column(name="gender")
 	private String genre;
 	@Column(name="dateAnniversaire")
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date birthday;
 	@Column(name="biographie")
 	private String biography;
@@ -173,18 +172,21 @@ public class Writer {
 	 * @param writer  the writer to remove
 	 */
 	public void removeBook(Book book){
-		
-		for (Book b : books){
-			if (b.getId() == book.getId())
-				books.remove(b); 
-		}
+		this.books.remove(book); 
+//		for (Book b : books){
+//			if (b.getId() == book.getId())
+//				books.remove(b); 
+//		}
+		book.removeWriter(this);
+
 	}
 	
 	public void addBook(Book book){
 		this.books.add(book);
+		
 		// Helper methods
-		List<Writer> writers = book.getWriters();  
-		writers.add(this);
+		//List<Writer> writers = book.getWriters();  
+		book.addWriter(this);
 
 	}
 	

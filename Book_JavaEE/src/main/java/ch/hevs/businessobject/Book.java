@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -38,9 +37,10 @@ public class Book {
 
 	// relations
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy="books", cascade = CascadeType.ALL)
 	private List<Writer> writers;
-	@OneToMany(mappedBy = "book")
+	
+	@ManyToMany(mappedBy = "books")
 	private List<Category> categories;
 	
 	// constructors
@@ -182,9 +182,7 @@ public class Book {
 		this.writers.add(writer);
 		
 		// helpers method
-		List<Book> books = writer.getBooks(); 
-		books.add(this);
-//		writer.setBook(this);
+		writer.addBook(this);
 	}
 	
 	/**
@@ -193,19 +191,17 @@ public class Book {
 	 * @param writer  the writer to remove
 	 */
 	public void removeWriter(Writer writer){
-		
-		for (Writer w : writers){
-			if (w.getId() == writer.getId())
-				writers.remove(w); 
-		}
-		
 		this.writers.remove(writer); 
-		
+//		for (Writer w : writers){
+//			if (w.getId() == writer.getId())
+//				writers.remove(w); 
+//		}
 		// helpers method
-		List<Book> books = writer.getBooks(); 
-		for(Book b: books)
-			if(b.getId() == this.getId())
-				books.remove(b); 
+		writer.removeBook(this);
+//		List<Book> books = writer.getBooks(); 
+//		for(Book b: books)
+//			if(b.getId() == this.getId())
+//				books.remove(b); 
 		
 	}
 	
