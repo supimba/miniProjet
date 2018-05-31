@@ -38,16 +38,14 @@ public class QueryBook {
 			Writer w = new Writer();
 			Address a = new Address();
 			
-			String someDate = "05.10.2011";
-			SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
-			Date date = sdf.parse(someDate);
+			
 			
 			a.setStreet("route de sion 22");
 			a.setCity("sierr");
 			a.setPostalCode("3960");
 			c.setNameCategory("fantastique");
 			w.setBiography("bio");
-			w.setBirthday(date);
+			w.setBirthday("06.11.1993");
 			w.setFirstname("joseph");
 			w.setLastname("delarue");
 			w.setGenre("homme");
@@ -55,7 +53,7 @@ public class QueryBook {
 			
 			em.persist(w);
 			em.persist(c);
-			tx.commit();
+			
 
 			b.addCategory(c);
 			b.addWriter(w);
@@ -66,8 +64,8 @@ public class QueryBook {
 			b.setTitle("title");
 			b.setYear("2008");
 
-			em.persist(b);
-			System.out.println("commited 2");
+			/*em.persist(b);*/
+			tx.commit();
 
 
 		} catch (Exception e) {
