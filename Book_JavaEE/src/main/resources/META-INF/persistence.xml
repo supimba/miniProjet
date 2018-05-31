@@ -5,7 +5,9 @@
                 http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 
-	<!-- AppServer 
+
+
+	<!-- Web -->
 	
 		<persistence-unit name="BookShelfPU">
 		<jta-data-source>java:/labsDS</jta-data-source>
@@ -23,10 +25,10 @@
 		</properties>
 	</persistence-unit>
 		
-	 /AppServer -->
+
 	
 	<!-- jUnit -->
-	<persistence-unit name="BookShelfPU">
+	<!-- persistence-unit name="BookShelfPU">
 
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>ch.hevs.businessobject.Writer</class>
@@ -45,8 +47,7 @@
 
 		</properties>
 
-	</persistence-unit>
-	<!-- -->
+	</persistence-unit-->
 	 
 	
 </persistence>

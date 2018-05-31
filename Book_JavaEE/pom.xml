@@ -5,7 +5,9 @@
   <version>0.0.1-SNAPSHOT</version>
   
   <dependencies>
-  	<!-- <dependency>
+      <!-- use this for the web -->
+  
+  <dependency>
 		<groupId>javax.faces</groupId>
 		<artifactId>javax.faces-api</artifactId>
 		<version>2.2</version>
@@ -123,8 +125,10 @@
     	<artifactId>junit</artifactId>
     	<version>4.11</version>
     	<scope>test</scope>
-    </dependency>-->
-    <dependency>
+    </dependency>
+    
+    <!-- use this for the unit test -->
+    <!--dependency>
 			<groupId>org.eclipse.persistence</groupId>
 			<artifactId>eclipselink</artifactId>
 			<version>2.5.0</version>
@@ -144,7 +148,8 @@
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
 			<scope>test</scope>
-		</dependency>
+		</dependency-->
+		
   </dependencies>
   <properties>
   	<maven.compiler.source>1.8</maven.compiler.source>

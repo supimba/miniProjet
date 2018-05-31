@@ -82,7 +82,7 @@ public class BookShelfBean implements BookShelf{
 		w2.setFirstname("Jean-Claude");
 		w2.setLastname("Ameisen");
 		w2.setGenre("Homme");
-		w2.setBirthday(new Date(1951, 12, 22));
+		w2.setBirthday("22.12.1951");
 		w2.setBiography("Jean Claude Ameisen, né le 22 décembre 1951 à New York, est un médecin, immunologiste et chercheur français en biologie."
 				+ "Il est directeur du Centre d'études du vivant de l'Institut des humanités de Paris de l'université Paris Diderot et président "
 				+ "du Comité consultatif national d'éthique (2012-2016).");
