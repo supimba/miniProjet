@@ -195,4 +195,9 @@ public class Writer {
 		return books;
 	}
 	
+	public void setAddress(Address address)
+	{
+		this.address = address;
+	}
+	
 }

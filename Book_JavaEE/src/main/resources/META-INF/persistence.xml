@@ -27,6 +27,7 @@
 	
 	<!-- jUnit -->
 	<persistence-unit name="BookShelfPU">
+
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>ch.hevs.businessobject.Writer</class>
 		<class>ch.hevs.businessobject.Book</class>
@@ -41,6 +42,7 @@
 			<property name="hibernate.connection.password" value="" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
+
 		</properties>
 
 	</persistence-unit>
