@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 
-import ch.hevs.businessobject.Account;
 import ch.hevs.businessobject.Book;
 import ch.hevs.businessobject.Category;
 import ch.hevs.businessobject.Writer;
@@ -15,7 +14,7 @@ import ch.hevs.businessobject.Writer;
 @Stateful
 public class BookShelfBean implements BookShelf{
 	
-	@PersistenceContext(type=PersistenceContextType.EXTENDED, name = "BookPU")
+	@PersistenceContext(type=PersistenceContextType.EXTENDED, name = "BookShelfPU")
 	private EntityManager em;
 
 	@Override

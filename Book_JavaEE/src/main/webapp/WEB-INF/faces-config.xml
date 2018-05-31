@@ -5,8 +5,8 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 	<managed-bean>
-		<managed-bean-name>transferBean</managed-bean-name>
-		<managed-bean-class>ch.hevs.managedbeans.TransferBean</managed-bean-class>
+		<managed-bean-name>AppBookBean</managed-bean-name>
+		<managed-bean-class>ch.hevs.managedbeans.AppBookBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>
