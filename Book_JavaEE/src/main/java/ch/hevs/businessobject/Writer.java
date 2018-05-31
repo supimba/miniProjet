@@ -42,7 +42,7 @@ public class Writer {
 	private Address address;
 	
 	// relations
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(mappedBy="writers", cascade = CascadeType.ALL)
 	private List<Book> books;
 	
 	// constructors
