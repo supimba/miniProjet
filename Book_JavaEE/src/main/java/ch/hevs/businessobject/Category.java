@@ -25,7 +25,7 @@ public class Category {
 	private String nameCategory;
 	
 	// relations
-	@ManyToMany
+	@ManyToMany(mappedBy="categories")
 	private List<Book> books; 
 	
 	
