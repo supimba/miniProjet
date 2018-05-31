@@ -1,6 +1,6 @@
 package ch.hevs.bookshelf;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.ejb.Local;
 
@@ -12,13 +12,13 @@ import ch.hevs.businessobject.Writer;
 public interface BookShelf {
 	
 	
-	void populate(); 
-	  public List<Book> getBooks();
+	public void populate(); 
+	  public Set<Book> getBooks();
 	  public Book getBook(long id);
 	  
-	  public List<Writer> getWriters();
+	  public Set<Writer> getWriters();
 	  public Writer getWriter(long id);
 	  
-	  public List<Category> getCategories();
+	  public Set<Category> getCategories();
 	  public Category getCategory(long id);
 }

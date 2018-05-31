@@ -1,6 +1,7 @@
 package ch.hevs.managedbeans;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.naming.InitialContext;
@@ -18,21 +19,22 @@ import ch.hevs.businessobject.Writer;
 
 public class AppBookBean
 {
-    private List<Book> books;
+    private Set<Book> books;
     private Book book;
-    private List<Writer> writers;
+    private Set<Writer> writers;
     private Writer writer;
-    private List<Category> categories;
+    private Set<Category> categories;
     private Category category;
     private BookShelf bookShelf;
+    private String toto;
     
     @PostConstruct
     public void initialize() throws NamingException {
     	// use JNDI to inject reference to bank EJB
-		System.out.println("Initialize");
-
+		System.out.println("DENIS Initialize");
+		this.toto = "toto";
     	InitialContext ctx = new InitialContext();
-		bookShelf = (BookShelf) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/BookShelfBean!ch.hevs.bookshelf.BookShelf");    	
+		bookShelf = (BookShelf) ctx.lookup("java:global/Book_JavaEE-0.0.1-SNAPSHOT/BookShelfBean!ch.hevs.bookshelf.BookShelf");    	
 		this.books = bookShelf.getBooks();
 		this.writers = bookShelf.getWriters();
 		this.categories = bookShelf.getCategories();
@@ -40,7 +42,7 @@ public class AppBookBean
 		this.populate();
     }
 
-	public List<Book> getBooks() {
+	public Set<Book> getBooks() {
 		return books;
 	}
 
@@ -48,7 +50,7 @@ public class AppBookBean
 		return book;
 	}
 
-	public List<Writer> getWriters() {
+	public Set<Writer> getWriters() {
 		return writers;
 	}
 
@@ -56,7 +58,7 @@ public class AppBookBean
 		return writer;
 	}
 
-	public List<Category> getCategories() {
+	public Set<Category> getCategories() {
 		return categories;
 	}
 
@@ -71,5 +73,15 @@ public class AppBookBean
 	public void populate(){
 		bookShelf.populate();
 	}
+
+	public String getToto() {
+		return toto;
+	}
+
+	public void setToto(String toto) {
+		this.toto = toto;
+	}
+	
+	
     
 }
