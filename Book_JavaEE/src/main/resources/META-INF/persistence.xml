@@ -5,22 +5,9 @@
                 http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
 	version="1.0">
 
-	<!-- AppServer -->
+	<!-- AppServer 
 	
-	<!-- <persistence-unit name="bankPU">
-		<jta-data-source>java:/labsDS</jta-data-source>
-		
-		<class>ch.hevs.businessobject.Client</class>
-		<class>ch.hevs.businessobject.Account</class>
-		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.show_sql" value="true" /> 
-			<property name="dialect" value="org.hibernate.dialect.HSQLDialect"/>
-
-		</properties>
-	</persistence-unit>
- -->
-		<persistence-unit name="bookPU">
+		<persistence-unit name="BookShelfPU">
 		<jta-data-source>java:/labsDS</jta-data-source>
 		
 		<class>ch.hevs.businessobject.Book</class>
@@ -36,12 +23,15 @@
 		</properties>
 	</persistence-unit>
 		
-	<!-- /AppServer -->
+	 /AppServer -->
 	
-	<!-- jUnit 
-	<persistence-unit name="bankPU">
+	<!-- jUnit -->
+	<persistence-unit name="BookShelfPU">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-
+		<class>ch.hevs.businessobject.Writer</class>
+		<class>ch.hevs.businessobject.Book</class>
+		<class>ch.hevs.businessobject.Category</class>
+		<class>ch.hevs.businessobject.Address</class>
 		<properties>
 			<property name="hibernate.connection.url"
 				value="jdbc:hsqldb:hsql://localhost/DB" />
@@ -50,11 +40,11 @@
 			<property name="hibernate.connection.username" value="sa" />
 			<property name="hibernate.connection.password" value="" />
 			<property name="hibernate.show_sql" value="true" />
-
+			<property name="hibernate.hbm2ddl.auto" value="create-drop" />
 		</properties>
 
 	</persistence-unit>
-	-->
+	<!-- -->
 	 
 	
 </persistence>

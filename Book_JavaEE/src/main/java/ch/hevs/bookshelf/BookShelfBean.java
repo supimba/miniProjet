@@ -53,6 +53,8 @@ public class BookShelfBean implements BookShelf{
 
 	@Override
 	public void populate() {
+		System.out.println("Populate");
+
 		
 		Book b1 = new Book("2266083260", "Les Fleurs Du Mal",
 				"Les Fleurs du mal est le titre d'un recueil de poèmes de Charles Baudelaire, englobant la quasi-totalité de sa production en vers, de 1840 jusqu'à sa mort survenue fin août 1867.",

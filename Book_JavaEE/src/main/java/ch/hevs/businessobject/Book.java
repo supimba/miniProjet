@@ -45,10 +45,12 @@ public class Book {
 	
 	// constructors
 	public Book(){
-
+		writers = new ArrayList<>(); 
+		categories = new ArrayList<>();
 	}
 	public Book(String isbn, String title, String summary, String year, String language) {
 		writers = new ArrayList<>(); 
+		categories = new ArrayList<>();
 		this.isbn = isbn;
 		this.title = title;
 		this.summary = summary;

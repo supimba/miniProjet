@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   
   <dependencies>
-  	<dependency>
+  	<!-- <dependency>
 		<groupId>javax.faces</groupId>
 		<artifactId>javax.faces-api</artifactId>
 		<version>2.2</version>
@@ -118,6 +118,33 @@
     	<version>5.2.6.Final</version>
     	<scope>provided</scope>
 	</dependency>
+	 <dependency>
+    	<groupId>junit</groupId>
+    	<artifactId>junit</artifactId>
+    	<version>4.11</version>
+    	<scope>test</scope>
+    </dependency>-->
+    <dependency>
+			<groupId>org.eclipse.persistence</groupId>
+			<artifactId>eclipselink</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.6.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.10</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
   </dependencies>
   <properties>
   	<maven.compiler.source>1.8</maven.compiler.source>

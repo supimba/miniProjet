@@ -29,12 +29,14 @@ public class AppBookBean
     @PostConstruct
     public void initialize() throws NamingException {
     	// use JNDI to inject reference to bank EJB
+		System.out.println("Initialize");
+
     	InitialContext ctx = new InitialContext();
 		bookShelf = (BookShelf) ctx.lookup("java:global/TP12-WEB-EJB-PC-EPC-E-0.0.1-SNAPSHOT/BookShelfBean!ch.hevs.bookshelf.BookShelf");    	
-			
 		this.books = bookShelf.getBooks();
 		this.writers = bookShelf.getWriters();
 		this.categories = bookShelf.getCategories();
+		
 		this.populate();
     }
 

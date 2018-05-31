@@ -47,6 +47,7 @@ public class Writer {
 	
 	// constructors
 	public Writer(){
+		books = new ArrayList<>(); 
 		
 	}
 	public Writer(String lastname, String firstname, String genre, Date birthday, String biography) {
