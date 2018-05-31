@@ -1,5 +1,7 @@
 package ch.hevs.businessobject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -145,8 +147,17 @@ public class Writer {
 	 *  
 	 * @param String  the birthday of the writer
 	 */
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
+	public void setBirthday(String birthday) {
+		String someDate = birthday;
+		SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
+		Date date = new Date();
+		try {
+			date = sdf.parse(someDate);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.birthday = date;
 	}
 
 	/**
