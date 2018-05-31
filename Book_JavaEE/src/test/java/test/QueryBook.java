@@ -1,6 +1,25 @@
-package test;
-
-public class QueryBook {
+//package test;
+//
+//import java.io.BufferedReader;
+//import java.io.IOException;
+//import java.io.InputStreamReader;
+//import java.util.Date;
+//import java.util.Iterator;
+//import java.util.List;
+//
+//import javax.persistence.EntityManager;
+//import javax.persistence.EntityManagerFactory;
+//import javax.persistence.EntityTransaction;
+//import javax.persistence.Persistence;
+//
+//import org.junit.Test;
+//
+//import ch.hevs.businessobject.Book;
+//import ch.hevs.businessobject.Category;
+//import ch.hevs.businessobject.Writer;
+//
+//public class QueryBook {
+//	
 //	@Test
 //	public void test() {
 //		try {
@@ -17,15 +36,16 @@ public class QueryBook {
 //					System.out.println("The End");
 //					break;
 //				} else {
-//					executeRequest(cmd);
+//					//executeRequest(cmd);
 //				}
 //			}
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
 //	}
-//
-//	private static void executeRequest(String cmd) {
+//	
+//	
+//	private static void executeRequest() {
 //		List result = null;
 //		EntityTransaction tx = null;
 //		try {
@@ -35,7 +55,7 @@ public class QueryBook {
 //			EntityManager em = emf.createEntityManager();
 //			tx = em.getTransaction();
 //			tx.begin();
-//			result = em.createQuery(cmd).getResultList();
+//		//	result = em.createQuery(cmd).getResultList();
 //			Iterator it = result.iterator();
 //			while (it.hasNext()) {
 //				System.out.println(it.next());
@@ -53,6 +73,7 @@ public class QueryBook {
 //			} 
 //		}
 //	}
+//	
 //
 //	public static void populate() {
 //		EntityTransaction tx = null;
@@ -72,7 +93,34 @@ public class QueryBook {
 //
 //			Writer w1 = new Writer("Baudelaire", "Charles", "homme", new Date(1980, 8, 31), "Charles Baudelaire est un poète français. Né à Paris le 9 avril 1821, il meurt dans la même ville le 31 août 1867 (à 46 ans).");
 //			b1.addWriter(w1);
-//		
+//			Category c1 = new Category("Poésie");
+//			b1.addCategory(c1);
+//			
+//			
+//			Book b2 = new Book();
+//			b2.setIsbn("1020900113");
+//			b2.setTitle("Jean-Claude Ameisen");
+//			b2.setLanguage("Français");
+//			b2.setSummary("Tous les samedis à 11 h, 1,5 million auditeurs fidèles et passionnés écoutent sur France Inter l'émission Sur les épaules de Darwin,"
+//					+ " de Jean-Claude Ameisen. Lancée il y a deux ans, cette émission est devenue une émission culte. Durant une heure Ameisen parle de sa voix "
+//					+ "chaude de l'univers, de la nature, de l'évolution, d'éthique, des grandes révolutions scientifiques qui nous exhortent à entendre et penser "
+//					+ "différemment le monde");
+//			b2.setYear("2012");
+//			
+//			Writer w2 = new Writer();
+//			w2.setFirstname("Jean-Claude");
+//			w2.setLastname("Ameisen");
+//			w2.setGenre("Homme");
+//			w2.setBirthday(new Date(1951, 12, 22));
+//			w2.setBiography("Jean Claude Ameisen, né le 22 décembre 1951 à New York, est un médecin, immunologiste et chercheur français en biologie."
+//					+ "Il est directeur du Centre d'études du vivant de l'Institut des humanités de Paris de l'université Paris Diderot et président "
+//					+ "du Comité consultatif national d'éthique (2012-2016).");
+//			
+//			Category c2 = new Category();
+//			c2.setNameCategory("Récits");
+//			
+//			em.persist(b1);
+//			tx.commit();
 //			
 //			
 ////			Address a1 = new Address("75000", "Champs elyse", "Paris");
@@ -126,13 +174,13 @@ public class QueryBook {
 ////			a.setAddress(a3);
 //
 ////			em.persist(a);
-//			
-//			tx.commit();
+////			
+////			tx.commit();
 //
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
 //
 //	}
-
-}
+//
+//}

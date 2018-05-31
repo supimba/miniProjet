@@ -2,11 +2,17 @@ package ch.hevs.bookshelf;
 
 import java.util.List;
 
+import javax.ejb.Local;
+
 import ch.hevs.businessobject.Book;
 import ch.hevs.businessobject.Category;
 import ch.hevs.businessobject.Writer;
 
+
 public interface BookShelf {
+	
+	
+	void populate(); 
 	  public List<Book> getBooks();
 	  public Book getBook(long id);
 	  

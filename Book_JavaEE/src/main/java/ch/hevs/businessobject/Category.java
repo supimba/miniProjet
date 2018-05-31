@@ -1,11 +1,13 @@
 package ch.hevs.businessobject;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,21 +23,18 @@ public class Category {
 	
 	@Column(name="nomCategorie")
 	private String nameCategory;
-	@Column(name="type")
-	private String type;
 	
 	// relations
-	@ManyToOne
-	private Book book; 
+	@ManyToMany
+	private List<Book> books; 
 	
 	
 	// constructors	
 	public Category(){
 		
 	}
-	public Category(long id, String nameCategory, String type) {
+	public Category(String nameCategory) {
 		this.nameCategory = nameCategory;
-		this.type = type;
 	}
 
 	/**
@@ -75,22 +74,21 @@ public class Category {
 		this.nameCategory = nameCategory;
 	}
 	
-	/**
-	 * Gets the type of the category.
-	 *  
-	 * @return String  the type of the category
-	 */
-	public String getType() {
-		return type;
+	public List<Book> getBooks() {
+		return books;
 	}
 	
-	/**
-	 * Sets the category type.
-	 *  
-	 * @param String  the type of the category
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}	
+	public void addBook(Book book) {
+		this.books.add(book);
+		
+		// helper
+		book.addCategory(this);
+	}
 	
+	public void removeBook(Book book) {
+		this.books.remove(book);
+		
+		// helper
+		book.removeCategory(this);
+	}
 }

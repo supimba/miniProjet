@@ -1,15 +1,19 @@
 package ch.hevs.businessobject;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 
 /**
@@ -30,6 +34,7 @@ public class Writer {
 	@Column(name="gender")
 	private String genre;
 	@Column(name="dateAnniversaire")
+	@Temporal(javax.persistence.TemporalType.DATE)
 	private Date birthday;
 	@Column(name="biographie")
 	private String biography;
@@ -37,14 +42,15 @@ public class Writer {
 	private Address address;
 	
 	// relations
-	@ManyToOne
-	private Book book;
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Book> books;
 	
 	// constructors
 	public Writer(){
 		
 	}
 	public Writer(String lastname, String firstname, String genre, Date birthday, String biography) {
+		books = new ArrayList<>(); 
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.genre = genre;
@@ -159,4 +165,33 @@ public class Writer {
 	public void setBiography(String biography) {
 		this.biography = biography;
 	}
+	
+	/**
+	 * Remove a writer of a book.
+	 * 
+	 * @param writer  the writer to remove
+	 */
+	public void removeBook(Book book){
+		this.books.remove(book); 
+//		for (Book b : books){
+//			if (b.getId() == book.getId())
+//				books.remove(b); 
+//		}
+		book.removeWriter(this);
+
+	}
+	
+	public void addBook(Book book){
+		this.books.add(book);
+		
+		// Helper methods
+		//List<Writer> writers = book.getWriters();  
+		book.addWriter(this);
+
+	}
+	
+	public List<Book> getBooks() {
+		return books;
+	}
+	
 }
