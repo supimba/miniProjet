@@ -1,7 +1,10 @@
 package ch.hevs.businessobject;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +17,6 @@ import javax.persistence.Table;
  * The Category class provides the book category information.
  */
 @Entity
-@Table(name="Category")
 public class Category {
 	
 	@Id
@@ -26,14 +28,16 @@ public class Category {
 	
 	// relations
 	@ManyToMany(mappedBy="categories")
-	private List<Book> books; 
+	private Set<Book> books; 
 	
 	
 	// constructors	
 	public Category(){
+	books = new HashSet<>();
 		
 	}
 	public Category(String nameCategory) {
+		books = new HashSet<>();
 		this.nameCategory = nameCategory;
 	}
 
@@ -74,7 +78,7 @@ public class Category {
 		this.nameCategory = nameCategory;
 	}
 	
-	public List<Book> getBooks() {
+	public Set<Book> getBooks() {
 		return books;
 	}
 	

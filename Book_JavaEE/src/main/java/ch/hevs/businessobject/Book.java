@@ -1,7 +1,9 @@
 package ch.hevs.businessobject;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -18,9 +20,7 @@ import javax.persistence.Table;
  * The Book class provides the information about the book.
  */
 @Entity
-@Table(name="Livre")
 public class Book {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
@@ -36,36 +36,28 @@ public class Book {
 	@Column(name="language")
 	private String language;
 	
-
 	// relations
 	
-	@ManyToMany
-	@JoinTable(
-			name="BOOK_WRT",
-			joinColumns = @JoinColumn(name="BOOK_ID",
-			referencedColumnName = "ID"),
-			inverseJoinColumns=@JoinColumn(name="WRT_ID",
-			referencedColumnName="ID"))
-	private List<Writer> writers;
+	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name = "book_writers",
+		joinColumns = { @JoinColumn(name = "book_id") },
+		inverseJoinColumns = { @JoinColumn(name = "writer_id") })
+	private Set<Writer> writers;
 	
-	@ManyToMany
-	@JoinTable(
-			name="BOOK_CAT",
-			joinColumns = @JoinColumn(name="BOOK_ID",
-			referencedColumnName ="ID"),
-			inverseJoinColumns=@JoinColumn(name="CAT_ID",
-			referencedColumnName="ID")
-			)
-	private List<Category> categories;
+	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name = "book_categories",
+		joinColumns = { @JoinColumn(name = "book_id") },
+		inverseJoinColumns = { @JoinColumn(name = "category_id") })
+	private Set<Category> categories;
 	
 	// constructors
 	public Book(){
-		writers = new ArrayList<>(); 
-		categories = new ArrayList<>();
+		writers = new HashSet<>(); 
+		categories = new HashSet<>();
 	}
 	public Book(String isbn, String title, String summary, String year, String language) {
-		writers = new ArrayList<>(); 
-		categories = new ArrayList<>();
+		writers = new HashSet<>(); 
+		categories = new HashSet<>();
 		this.isbn = isbn;
 		this.title = title;
 		this.summary = summary;
@@ -186,7 +178,7 @@ public class Book {
 	 * 
 	 * @return List<Writter>  all writers of the book
 	 */
-	public List<Writer> getWriters(){
+	public Set<Writer> getWriters(){
 		return writers; 
 	}
 	
@@ -197,7 +189,6 @@ public class Book {
 	 */
 	public void addWriter(Writer writer){
 		this.writers.add(writer);
-		
 		// helpers method
 		writer.addBook(this);
 	}

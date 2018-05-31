@@ -26,47 +26,39 @@ public class QueryBook {
 		EntityTransaction tx = null;
 		try {			
 			EntityManagerFactory emf = Persistence.createEntityManagerFactory("BookShelfPU");
-			//@PersistenceContext(name="BookShelfPU", type=PersistenceContextType.E)
 			EntityManager em = emf.createEntityManager();
 
 			tx = em.getTransaction();
 			tx.begin();
 
-			
 			Book b = new Book();
 			Category c = new Category();
+			Category c2 = new Category();
 			Writer w = new Writer();
 			Address a = new Address();
-			
-			
-			
 			a.setStreet("route de sion 22");
 			a.setCity("sierr");
 			a.setPostalCode("3960");
-			c.setNameCategory("fantastique");
+			c.setNameCategory("fantastique22");
+			c2.setNameCategory("fantastiquement cool");
+
 			w.setBiography("bio");
 			w.setBirthday("06.11.1993");
 			w.setFirstname("joseph");
 			w.setLastname("delarue");
 			w.setGenre("homme");
 			w.setAddress(a);
-			
-			em.persist(w);
-			em.persist(c);
-			
-
-			b.addCategory(c);
-			b.addWriter(w);
-
 			b.setIsbn("123");
-			b.setLanguage("fr");
+			b.setLanguage("freeee");
 			b.setSummary("summ");
 			b.setTitle("title");
 			b.setYear("2008");
-
-			/*em.persist(b);*/
+			b.addCategory(c);
+			em.persist(c);
+			em.persist(w);
+			em.persist(b);
 			tx.commit();
-
+			
 
 		} catch (Exception e) {
 			System.out.println("error");

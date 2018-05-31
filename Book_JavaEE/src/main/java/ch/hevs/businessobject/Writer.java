@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,7 +24,6 @@ import javax.persistence.Temporal;
  * The Writer class provides information about the book writer.
  */
 @Entity
-@Table(name="Writer")
 public class Writer {
 
 	@Id
@@ -44,16 +45,15 @@ public class Writer {
 	private Address address;
 	
 	// relations
-	@ManyToMany(mappedBy="writers", cascade = CascadeType.ALL)
-	private List<Book> books;
+	@ManyToMany(mappedBy="writers")
+	private Set<Book> books;
 	
 	// constructors
 	public Writer(){
-		books = new ArrayList<>(); 
-		
+		books = new HashSet(); 
 	}
 	public Writer(String lastname, String firstname, String genre, Date birthday, String biography) {
-		books = new ArrayList<>(); 
+		books = new HashSet<>(); 
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.genre = genre;
@@ -202,7 +202,7 @@ public class Writer {
 
 	}
 	
-	public List<Book> getBooks() {
+	public Set<Book> getBooks() {
 		return books;
 	}
 	
