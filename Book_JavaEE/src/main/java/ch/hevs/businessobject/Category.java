@@ -84,15 +84,11 @@ public class Category {
 	
 	public void addBook(Book book) {
 		this.books.add(book);
-		
-		// helper
-		book.addCategory(this);
+		//book.addCategory(this);
 	}
 	
 	public void removeBook(Book book) {
 		this.books.remove(book);
-		
-		// helper
-		book.removeCategory(this);
+		//book.removeCategory(this);
 	}
 }

@@ -185,20 +185,13 @@ public class Writer {
 	 */
 	public void removeBook(Book book){
 		this.books.remove(book); 
-//		for (Book b : books){
-//			if (b.getId() == book.getId())
-//				books.remove(b); 
-//		}
-		book.removeWriter(this);
+		//book.removeWriter(this);
 
 	}
 	
 	public void addBook(Book book){
 		this.books.add(book);
-		
-		// Helper methods
-		//List<Writer> writers = book.getWriters();  
-		book.addWriter(this);
+		//book.addWriter(this);
 
 	}
 	

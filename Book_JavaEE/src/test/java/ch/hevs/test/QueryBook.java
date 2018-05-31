@@ -33,14 +33,12 @@ public class QueryBook {
 
 			Book b = new Book();
 			Category c = new Category();
-			Category c2 = new Category();
 			Writer w = new Writer();
 			Address a = new Address();
 			a.setStreet("route de sion 22");
 			a.setCity("sierr");
 			a.setPostalCode("3960");
 			c.setNameCategory("fantastique22");
-			c2.setNameCategory("fantastiquement cool");
 
 			w.setBiography("bio");
 			w.setBirthday("06.11.1993");
@@ -54,9 +52,16 @@ public class QueryBook {
 			b.setTitle("title");
 			b.setYear("2008");
 			b.addCategory(c);
-			em.persist(c);
-			em.persist(w);
+			
 			em.persist(b);
+			
+			Category c2 = new Category();
+			c2.setNameCategory("fantastiquement cool");
+			em.persist(c2);
+	
+			tx.commit();
+			tx.begin();
+			em.remove(b);
 			tx.commit();
 			
 

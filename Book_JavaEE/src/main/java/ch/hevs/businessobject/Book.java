@@ -189,7 +189,6 @@ public class Book {
 	 */
 	public void addWriter(Writer writer){
 		this.writers.add(writer);
-		// helpers method
 		writer.addBook(this);
 	}
 	
@@ -199,17 +198,8 @@ public class Book {
 	 * @param writer  the writer to remove
 	 */
 	public void removeWriter(Writer writer){
-		this.writers.remove(writer); 
-//		for (Writer w : writers){
-//			if (w.getId() == writer.getId())
-//				writers.remove(w); 
-//		}
-		// helpers method
+		this.writers.remove(writer); 		
 		writer.removeBook(this);
-//		List<Book> books = writer.getBooks(); 
-//		for(Book b: books)
-//			if(b.getId() == this.getId())
-//				books.remove(b); 
 		
 	}
 	
@@ -220,6 +210,7 @@ public class Book {
 	 */
 	public void addCategory(Category category){
 		this.categories.add(category);
+		category.addBook(this);
 	}
 	
 	/**
@@ -228,11 +219,9 @@ public class Book {
 	 * @param category  the category to remove
 	 */
 	public void removeCategory(Category category){
-		
-		for (Category c : categories){
-			if (c.getId() == category.getId())
-				writers.remove(c); 
-		}
+		this.categories.remove(category);
+		category.removeBook(this);
+
 	}
 	
 	@Override
