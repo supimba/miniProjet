@@ -7,29 +7,29 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
-	<div class="col col-5 overflow">
-				<div id="content">
-		<ui:repeat var="b" value="#{AppBookBean.books.toArray()}">
-			<button >
-			<h:form>
-			
-				<h:commandLink class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm" type="submit" action="#{AppBookBean.getBookFromDatabase(b.id)}">
+		<div class="col col-5 overflow">
+			<div id="content">
+				<ui:repeat var="b" value="#{AppBookBean.books.toArray()}">
+					<button>
+						<h:form>
+
+							<h:commandLink
+								class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
+								type="submit" action="#{AppBookBean.getBookFromDatabase(b.id)}">
 				 #{b.title}
 				<ui:repeat var="w" value="#{b.writers.toArray()}" varStatus="status">
-					<i> 
-						#{w.firstname} #{w.lastname}
-					</i>
-				</ui:repeat>
-				</h:commandLink>
-				</h:form>
-				
+									<i> #{w.firstname} #{w.lastname} </i>
+								</ui:repeat>
+							</h:commandLink>
+						</h:form>
 
-			</button>
-		</ui:repeat>
-		</div>
+
+					</button>
+				</ui:repeat>
 			</div>
-			<div class="col col-5 overflow">
-				<div rendered="#{AppBookBean.book}">
+		</div>
+		<div class="col col-5 overflow">
+			<div rendered="#{AppBookBean.book}">
 				<h4 class="mt-2">#{AppBookBean.book.title}</h4>
 				<p class="small">ISBN #{AppBookBean.book.isbn}</p>
 				<p>
@@ -48,20 +48,25 @@
 					<b class="mt-2 mb-2">Author(s)</b>
 				</p>
 				<p>
-					<ui:repeat var="writers" value="#{AppBookBean.book.writers.toArray()}" varStatus="status">
-						<button class="btn btn-sm btn-outline-primary"> #{writers.firstname} #{writers.lastname}</button>
+					<ui:repeat var="writers"
+						value="#{AppBookBean.book.writers.toArray()}" varStatus="status">
+						<button class="btn btn-sm btn-outline-primary">
+							#{writers.firstname} #{writers.lastname}</button>
 					</ui:repeat>
 				</p>
 				<p>
 					<b class="mt-2 mb-2">Category</b>
 				</p>
 				<p>
-					<ui:repeat var="cat" value="#{AppBookBean.book.categories.toArray()}" varStatus="status">
-						<button class="btn btn-sm btn-outline-primary"> #{cat.nameCategory}</button>
+					<ui:repeat var="cat"
+						value="#{AppBookBean.book.categories.toArray()}"
+						varStatus="status">
+						<button class="btn btn-sm btn-outline-primary">
+							#{cat.nameCategory}</button>
 					</ui:repeat>
 				</p>
-				</div>
 			</div>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
