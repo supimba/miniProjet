@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
+	<ui:define name="content">
+		<h:outputLabel value="Ajouter un livre"></h:outputLabel>
+		<br></br>
+		<div class="row">
+			<h:form id="insertBookForm">
+				<div class="col-md-6">
+					<div class="form-group">
+						<h:outputLabel for="isbn">ISBN<label>*</label></h:outputLabel>
+						<h:inputText id="isbn" value="#{CreateBookBean.isbn}"
+							required="true" requiredMessaeg="Veuillez saisir un titre" size="20" maxlength="60" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<h:outputLabel for="title">Titre<label>*</label></h:outputLabel>
+						<h:inputText id="title" value="#{CreateBookBean.title}" required="true" size="20" maxlength="60" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<h:outputLabel for="summary">Résumé<label>*</label></h:outputLabel>
+						<h:inputTextarea id="summary" value="#{CreateBookBean.summary}" required="false" cols="20" rows="10"></h:inputTextarea>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<h:outputLabel for="language">Langue<label>*</label></h:outputLabel>
+						<h:inputText id="language" value="#{CreateBookBean.language}" required="true" size="20" maxlength="60" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<h:outputLabel for="year">Année de parrution<label>*</label></h:outputLabel>
+						<h:inputText id="year" value="#{CreateBookBean.year}" required="false" size="20" maxlength="60" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group">
+						<div class="btn btn-primary">
+							<h:commandButton value="Send" action="#{CreateBookBean.insertBook}" ></h:commandButton>
+						</div>
+					</div>
+				</div>				
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+</html>
