@@ -1,7 +1,7 @@
 package ch.hevs.bookshelf;
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.ejb.Stateful;
@@ -23,42 +23,41 @@ public class BookShelfBean implements BookShelf{
 
 	@Override
 	public Set<Book> getBooks() {
-		return (Set<Book>) em.createQuery("SELECT id, title FROM book").getResultList();
+		return new HashSet<Book>(em.createQuery("FROM Book").getResultList());
 	}
 
 	@Override
 	public Book getBook(long id) {
-		return (Book) em.createQuery("SELECT *, title FROM book where id=:id").setParameter("id", id).getResultList();
+		return (Book) em.createQuery("FROM Book b where c.id=:id").setParameter("id", id).getResultList();
 	}
 
 	@Override
 	public Set<Writer> getWriters() {
-		return (Set<Writer>) em.createQuery("SELECT id, title FROM writer").getResultList();
+		return new HashSet<Writer>(em.createQuery("FROM Writer").getResultList());
 
 	}
 
 	@Override
 	public Writer getWriter(long id) {
-		return (Writer) em.createQuery("SELECT *, title FROM writer where id=:id").setParameter("id", id).getResultList();
+		return (Writer) em.createQuery("FROM writer w where w.id=:id").setParameter("id", id).getResultList();
 	}
 
 	@Override
 	public Set<Category> getCategories() {
-		return (Set<Category>) em.createQuery("SELECT id, title FROM category").getResultList();
+		return new HashSet<Category>(em.createQuery("FROM Category").getResultList());
 
 	}
 
 	@Override
 	public Category getCategory(long id) {
-		return (Category) em.createQuery("SELECT *, title FROM category where id=:id").setParameter("id", id).getResultList();
+		return (Category) em.createQuery("FROM category c where c.id=:id").setParameter("id", id).getResultList();
 
 	}
 
 	@Override
 	public void populate() {
-		System.out.println("DENIS Populate");
 
-		
+
 		Book b1 = new Book();
 		b1.setIsbn("2266083260");
 		b1.setTitle("Les Fleurs Du Mal");

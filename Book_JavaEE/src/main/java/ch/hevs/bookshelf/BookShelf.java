@@ -1,9 +1,7 @@
 package ch.hevs.bookshelf;
 
 import java.util.Set;
-
 import javax.ejb.Local;
-
 import ch.hevs.businessobject.Book;
 import ch.hevs.businessobject.Category;
 import ch.hevs.businessobject.Writer;

@@ -1,6 +1,5 @@
 package ch.hevs.managedbeans;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
@@ -43,31 +42,27 @@ public class AppBookBean
     }
 
 	public Set<Book> getBooks() {
-		return books;
+		return bookShelf.getBooks();
 	}
 
-	public Book getBook() {
-		return book;
+	public Book getBook(long i) {
+		return bookShelf.getBook(i);
 	}
 
 	public Set<Writer> getWriters() {
-		return writers;
+		return bookShelf.getWriters();
 	}
 
-	public Writer getWriter() {
-		return writer;
+	public Writer getWriter(long i) {
+		return bookShelf.getWriter(i);
 	}
 
 	public Set<Category> getCategories() {
-		return categories;
+		return bookShelf.getCategories();
 	}
 
-	public Category getCategory() {
-		return category;
-	}
-
-	public BookShelf getBookShelf() {
-		return bookShelf;
+	public Category getCategory(long i) {
+		return bookShelf.getCategory(i);
 	}
    
 	public void populate(){
