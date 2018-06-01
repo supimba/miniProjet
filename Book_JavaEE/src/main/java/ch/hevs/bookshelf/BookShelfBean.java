@@ -28,7 +28,7 @@ public class BookShelfBean implements BookShelf{
 
 	@Override
 	public Book getBook(long id) {
-		return (Book) em.createQuery("FROM Book b where c.id=:id").setParameter("id", id).getResultList();
+		return (Book) em.createQuery("FROM Book b WHERE b.id=:id").setParameter("id", id).getSingleResult();
 	}
 
 	@Override

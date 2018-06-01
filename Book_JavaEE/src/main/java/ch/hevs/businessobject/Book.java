@@ -201,6 +201,11 @@ public class Book {
 		
 	}
 	
+	public Set<Category> getCategories()
+	{
+		return this.categories;
+	}
+	
 	/**
 	 * Add a category to a book.
 	 * 
