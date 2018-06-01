@@ -1,0 +1,82 @@
+/* yellow rgba(229, 213, 91, 1);
+blue rgba(38, 187, 231, 1);
+white rgba(255, 250, 255, 1);
+red rgba(216, 49, 91, 1);
+black rgba(30, 27, 24, 1);
+*/
+b
+{
+    color:rgba(216, 49, 91, 1) ;
+}
+h4
+{
+    color: rgba(38, 187, 231, 1);
+
+}
+
+#leftnav {
+    background-color: rgba(38, 187, 231, 1);
+    padding: 0;
+
+}
+
+#leftnav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#leftnav ul li {
+
+}
+
+#leftnav ul li a {
+    cursor: pointer;
+    background-color: rgba(38, 187, 231, 1);
+    display: block;
+    border-bottom: .5px solid rgb(255, 239, 102);
+    padding: .5em;
+    color: rgb(255, 239, 102);
+    transition: .3s;
+
+}
+#leftnav ul li a:hover {
+    background-color: rgb(38, 173, 217);
+    transition: .3s;
+
+}
+
+.navbar-light .navbar-brand {
+    color: rgb(255, 239, 102);
+}
+
+.bg-light {
+    background-color: rgba(216, 49, 91, 1) !important;
+}
+
+.col {
+    border-right: .5px solid rgba(38, 187, 231, 1);
+}
+
+.col:last-child {
+    height: calc(100vh - 56px);
+    border-right: none;
+}
+
+.btn-outline-primary
+{
+    color:rgba(38, 187, 231, 1);
+    border: 1px solid rgba(38, 187, 231, 1);
+}
+.btn-outline-primary:hover
+{
+    color:white;
+    background-color: rgba(38, 187, 231, 1);
+    border: 1px solid rgba(38, 187, 231, 1);
+}
+
+.btn-block {
+    white-space: inherit;
+    text-align: left;
+    padding-bottom: -0.3em;
+}

@@ -1,33 +1,73 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-<head>
-  <title><ui:insert name="title">Default title</ui:insert></title>
-</head>
-
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta charset="utf-8"></meta>
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+	<link type="text/css" rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
+	<h:outputStylesheet name="css/style.css" />
+	<title><ui:insert name="title">BookApp</ui:insert></title>
+</h:head>
 <body>
-<ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}"/>
-
-<div id="header">
-    <ui:insert name="header">
-    	<ui:include src="header.xhtml"/>
-    </ui:insert>
-</div>
-
-
-<div id="content">
-  <ui:insert name="content">
-    	<ui:include src="content.xhtml"/>  
-  </ui:insert>
-</div>
-
-<div id="footer">
-  <ui:insert name="footer">
-		<ui:include src="footer.xhtml"/>
-  </ui:insert>
-</div>
-
+	<nav class="navbar navbar-light bg-light text-center"> <a
+		class="navbar-brand" href="#"
+		style="display: block; margin: auto !important;"> <i
+		class="fas fa-book-open"></i> AppBook
+	</a> </nav>
+	<div class="container-fluid">
+		<div class="row">
+			<div id="leftnav" class="col col-2">
+				<ul>
+					<li><a><i class="fas fa-book"></i> Books</a></li>
+					<li><a><i class="fas fa-user"></i> Authors</a></li>
+					<li><a><i class="fas fa-tag"></i> Categories</a></li>
+				</ul>
+			</div>
+			<div class="col col-5">
+				<div id="content">
+					<ui:insert name="content">
+						<ui:include src="content.xhtml" />
+					</ui:insert>
+				</div>
+			</div>
+			<div class="col col-5">
+				<h4 class="mt-2">Harry Potter et le Prisonnier d'Azkaban</h4>
+				<p class="small">978-2070584628</p>
+				<p>
+					<b class="mt-2 mb-2"> Synopsis </b>
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea
+					eos libero maiores odit sequi vel vero! Aspernatur doloremque fugit
+					labore numquam ut? Fugiat harum illum neque nulla quibusdam soluta,
+					voluptate.</p>
+				<p>
+					<b class="mt-2 mb-2">Author</b>
+				</p>
+				<p>
+					<button class="btn btn-sm btn-outline-primary">J.K.
+						Rowling</button>
+				</p>
+				<p>
+					<b class="mt-2 mb-2">Category</b>
+				</p>
+				<p>
+					<button class="btn btn-sm btn-outline-primary">Fantasy</button>
+				</p>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<h:outputStylesheet library="css" name="style.css" />
 </body>
-
 </html>
+

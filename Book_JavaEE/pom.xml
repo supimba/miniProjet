@@ -167,6 +167,7 @@
         	<artifactId>wildfly-maven-plugin</artifactId>
         	<version>1.0.2.Final</version>
         </plugin>
+       
     </plugins>
   </build>
   <packaging>war</packaging>
