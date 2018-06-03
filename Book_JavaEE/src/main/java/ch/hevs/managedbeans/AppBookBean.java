@@ -60,7 +60,8 @@ public class AppBookBean {
 		return bookShelf.getWriters();
 	}
 
-	public Writer getWriter(long i) {
+	public Writer getWriter()
+	{
 		return this.writer;
 	}
 	
