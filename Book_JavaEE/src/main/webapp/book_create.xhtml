@@ -47,9 +47,11 @@
 				</div>
 
 						
-<!-- 						<h:selectOneMenu value="#{CreateBookBean.writerSelectedId}"> -->
-<!-- 						<f:selectItems value="#{CreateBookBean.writers}" var="writer" itemValue="#{writer.id}" itemLabel="#{writer.firstname - writer.lastname}" ></f:selectItems> -->
-<!-- 						</h:selectOneMenu> -->
+						<h:selectManyListbox value="#{CreateBookBean.writerSelectedId}" >
+						<f:selectItems value="#{CreateBookBean.writers}" var="writer" itemValue="#{writer.id}" itemLabel="#{writer.name}" ></f:selectItems>
+						</h:selectManyListbox>
+						
+						
 <!-- 						https://stackoverflow.com/questions/19139211/attribute-cannot-be-resolved-as-a-member-of-bean -->
 
 

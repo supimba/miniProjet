@@ -1,5 +1,7 @@
 package ch.hevs.managedbeans;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
@@ -20,16 +22,13 @@ public class CreateBookBean {
 
 	@EJB
 	private BookShelf bookShelf;
-
-	private String isbn;
-	private String title;
-	private String summary;
-	private String year;
-	private String language;
+	
 	private Set<Category> categories;
 	private Category categroy; 
 	private Set<Writer> writers;
-	private String writerSelectedId;
+	private List<String> writerSelectedId;
+
+
 	private Book book = new Book(); 
 	
 	@PostConstruct
@@ -37,12 +36,25 @@ public class CreateBookBean {
 		// use JNDI to inject reference to bank EJB
 		InitialContext ctx = new InitialContext();
 		bookShelf = (BookShelf) ctx.lookup("java:global/Book_JavaEE-0.0.1-SNAPSHOT/BookShelfBean!ch.hevs.bookshelf.BookShelf");
+		 
 		this.writers = bookShelf.getWriters();
 		this.categories = bookShelf.getCategories();
 	}
 
+	public List<String> getWriterSelectedId() {
+		return writerSelectedId;
+	}
 	
+	public void setWriterSelectedId(List<String> writerSelectedId) {
+		this.writerSelectedId = writerSelectedId;
+	}
+
+
 	public void insertBook(Book book){
+//		Writer writer = bookShelf.getWriter(Long.valueOf(writerSelectedId)); 
+		for(String writerId : writerSelectedId)
+			book.addWriter(bookShelf.getWriter(Long.valueOf(writerId)));
+		
 		bookShelf.insertBook(book);		
 	}
 
@@ -67,14 +79,6 @@ public class CreateBookBean {
 		this.categroy = categroy;
 	}
 
-	public String getWriterSelectedId() {
-		return writerSelectedId;
-	}
-
-	public void setWriterSelectedId(String writerSelectedId) {
-		this.writerSelectedId = writerSelectedId;
-	}
-
 	public Book getBook() {
 		return book;
 	}
@@ -83,11 +87,4 @@ public class CreateBookBean {
 		this.book = book;
 	}
 
-	public void cleanFields() {
-		isbn = "";
-		title = "";
-		summary = "";
-		language = "";
-		year = "";
-	}
 }
