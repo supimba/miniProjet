@@ -23,15 +23,14 @@ public class AppBookBean {
 	private Set<Book> books;
 	private Book book = new Book();
 	private Set<Writer> writers;
-	private Writer writer;
+	private Writer writer = new Writer();
 	private Set<Category> categories;
-	private Category category;
+	private Category category = new Category();
 	private BookShelf bookShelf;
 
 	@PostConstruct
 	public void initialize() throws NamingException {
 		// use JNDI to inject reference to bank EJB
-		System.out.println("DENIS Initialize");
 		InitialContext ctx = new InitialContext();
 
 		bookShelf = (BookShelf) ctx
@@ -59,15 +58,24 @@ public class AppBookBean {
 	}
 
 	public Writer getWriter(long i) {
+		return this.writer;
+	}
+	
+	public Writer getWriterFromDatabase(long i) {
 		return bookShelf.getWriter(i);
 	}
 
 	public Set<Category> getCategories() {
 		return bookShelf.getCategories();
 	}
+	
+	public Category getCategory() {
+		return this.category;
+	}
+	
+	public Category getCategoryFromDatabase(long i) {
+		return this.category = bookShelf.getCategory(i);
 
-	public Category getCategory(long i) {
-		return bookShelf.getCategory(i);
 	}
 
 	public void populate() {
