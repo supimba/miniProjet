@@ -22,7 +22,7 @@ public class CreateBookBean {
 
 	@EJB
 	private BookShelf bookShelf;
-	
+	private String test; 
 	private Set<Category> categories;
 	private Category categroy; 
 	private Set<Writer> writers;
@@ -38,6 +38,8 @@ public class CreateBookBean {
 		bookShelf = (BookShelf) ctx.lookup("java:global/Book_JavaEE-0.0.1-SNAPSHOT/BookShelfBean!ch.hevs.bookshelf.BookShelf");
 		 
 		this.writers = bookShelf.getWriters();
+		for(Writer w : writers)
+			System.out.println("Writers: " + w.getFirstname());
 		this.categories = bookShelf.getCategories();
 	}
 

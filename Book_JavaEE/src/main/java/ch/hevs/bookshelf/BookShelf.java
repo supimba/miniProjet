@@ -9,22 +9,22 @@ import ch.hevs.businessobject.Writer;
 
 public interface BookShelf {
 	
+	public void populate();
+	public Set<Book> getBooks();
+	public Book getBook(long id);
+	public void insertBook(Book book);
+	public void updateBook(Book book);
+	public void deleteBook(Book book);
 	
-	public void populate(); 
-	  public Set<Book> getBooks();
-	  public Book getBook(long id);
-	  
-	  public Set<Writer> getWriters();
-	  public Writer getWriter(long id);
-	  
-	  public Set<Category> getCategories();
-	  public Category getCategory(long id);
-	void deleteBook(Book book);
-	void insertWriter(String firstname, String lastname, String birthday, String genre, String biography);
-	void updateWriter(Writer writer);
-	void deleteWriter(Writer writer);
-	void insertCategory(String nameCategory);
-	void updateCategory(Category category);
-	void updateBook(Book book);
-	void insertBook(String isbn, String title, String summary, String language, String year);
+	public Set<Writer> getWriters();
+	public Writer getWriter(long id);
+	public void insertWriter(String firstname, String lastname, String birthday, String genre, String biography);
+	public void updateWriter(Writer writer);
+	public void deleteWriter(Writer writer);
+	
+	public Set<Category> getCategories();
+	public Category getCategory(long id);
+	public void insertCategory(String nameCategory);
+	public void updateCategory(Category category);
+
 }
