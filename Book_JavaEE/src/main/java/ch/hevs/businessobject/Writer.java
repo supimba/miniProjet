@@ -41,6 +41,7 @@ public class Writer {
 	private String biography;
 	@Embedded
 	private Address address;
+	private String name; 
 	
 	// relations
 	@ManyToMany(mappedBy="writers")
@@ -102,6 +103,11 @@ public class Writer {
 	 */
 	public String getFirstname() {
 		return firstname;
+	}
+	
+	public String getName(){
+		this.name = firstname +" "+ lastname;
+		return name;
 	}
 
 	/**
