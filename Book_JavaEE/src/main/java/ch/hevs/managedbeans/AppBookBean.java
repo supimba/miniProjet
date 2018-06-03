@@ -65,9 +65,9 @@ public class AppBookBean {
 		return this.writer;
 	}
 	
-	public Writer getWriterFromDatabase(long i) {
+	public void getWriterFromDatabase(long i) {
 		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "writer_index.xhtml");
-		return bookShelf.getWriter(i);
+		this.writer = bookShelf.getWriter(i);
 	}
 
 	public Set<Category> getCategories() {
@@ -78,9 +78,9 @@ public class AppBookBean {
 		return this.category;
 	}
 	
-	public Category getCategoryFromDatabase(long i) {
+	public void getCategoryFromDatabase(long i) {
 		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_index.xhtml");
-		return this.category = bookShelf.getCategory(i);
+		this.category = bookShelf.getCategory(i);
 
 	}
 

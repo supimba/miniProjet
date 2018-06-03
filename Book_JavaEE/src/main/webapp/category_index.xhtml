@@ -13,7 +13,7 @@
 							<h:commandLink
 								class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
 								type="submit" action="#{AppBookBean.getCategoryFromDatabase(c.id)}">
-									#{c.id} #{c.nameCategory}
+									#{c.nameCategory}
 							</h:commandLink>
 						</h:form>
 			</ui:repeat>
@@ -27,8 +27,15 @@
 				<p>
 					<ui:repeat var="b"
 						value="#{AppBookBean.category.books.toArray()}" varStatus="status">
-						<button class="btn btn-sm btn-outline-primary">
-							#{b.title}</button>
+						<h:form >
+						
+						<h:commandLink
+								class="mt-1 mb-1 btn btn-outline-primary btn-sm"
+								type="submit" action="#{AppBookBean.getBookFromDatabase(b.id)}">#{b.title}
+								 
+							</h:commandLink>
+							
+							</h:form>
 					</ui:repeat>
 				</p>
 			</div>
