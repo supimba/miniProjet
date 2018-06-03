@@ -9,6 +9,11 @@
 		<managed-bean-class>ch.hevs.managedbeans.AppBookBean</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+		<managed-bean>
+		<managed-bean-name>CreateBookBean</managed-bean-name>
+		<managed-bean-class>ch.hevs.managedbeans.CreateBookBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
 	<navigation-rule>
 		<display-name>book_index.xhtml</display-name>
 		<from-view-id>/book_index.xhtml</from-view-id>
