@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -50,6 +51,8 @@ public class AppBookBean {
 	}
 
 	public void getBookFromDatabase(long i) {
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "book_index.xhtml");
+
 		this.book = bookShelf.getBook(i);
 	}
 
@@ -62,6 +65,7 @@ public class AppBookBean {
 	}
 	
 	public Writer getWriterFromDatabase(long i) {
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "writer_index.xhtml");
 		return bookShelf.getWriter(i);
 	}
 
@@ -74,6 +78,7 @@ public class AppBookBean {
 	}
 	
 	public Category getCategoryFromDatabase(long i) {
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_index.xhtml");
 		return this.category = bookShelf.getCategory(i);
 
 	}

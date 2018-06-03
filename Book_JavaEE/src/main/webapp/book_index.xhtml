@@ -24,7 +24,7 @@
 			</div>
 		</div>
 		<div class="col col-5 overflow">
-			<div rendered="#{AppBookBean.book}">
+			<div rendered="#{AppBookBean.book.title!=null}">
 				<h4 class="mt-2">#{AppBookBean.book.title}</h4>
 				<p class="small">ISBN #{AppBookBean.book.isbn}</p>
 				<p>
@@ -45,8 +45,12 @@
 				<p>
 					<ui:repeat var="writers"
 						value="#{AppBookBean.book.writers.toArray()}" varStatus="status">
-						<button class="btn btn-sm btn-outline-primary">
-							#{writers.firstname} #{writers.lastname}</button>
+						<h:form>
+						<h:commandLink
+								class="mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
+								type="submit" action="#{AppBookBean.getWriterFromDatabase(writers.id)}">#{writers.firstname} #{writers.lastname}
+							</h:commandLink>
+							</h:form>
 					</ui:repeat>
 				</p>
 				<p>
@@ -62,7 +66,7 @@
 						<h:commandLink
 								class="mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
 								type="submit" action="#{AppBookBean.getCategoryFromDatabase(cat.id)}">#{cat.nameCategory}
-									 
+								 
 							</h:commandLink>
 							
 							</h:form>

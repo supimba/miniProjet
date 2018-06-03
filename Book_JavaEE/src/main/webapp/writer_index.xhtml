@@ -9,9 +9,44 @@
 	<ui:define name="content">
 		<div class="col col-5 overflow">
 			<ui:repeat var="w" value="#{AppBookBean.writers.toArray()}">
-				<button class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm">
-					#{w.firstname} #{w.lastname}</button>
+					<h:form>
+							<h:commandLink
+								class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
+								type="submit" action="#{AppBookBean.getWriterFromDatabase(w.id)}">
+									#{w.firstname} #{w.lastname}
+							</h:commandLink>
+						</h:form>
 			</ui:repeat>
+		</div>
+		<div class="col col-5 overflow">
+			<div rendered="#{AppBookBean.writer.firstname!=null}">
+				<h4 class="mt-2">#{AppBookBean.writer.firstname}</h4>
+				<p>
+					<b class="mt-2 mb-2">Biography</b>
+				</p>
+				<p>#{AppBookBean.writer.biography}</p>
+				<p>
+					<b class="mt-2 mb-2">Date of Birth</b>
+				</p>
+				<p>#{AppBookBean.writer.birthday}</p>
+				<p>
+					<b class="mt-2 mb-2">Address</b>
+				</p>
+				
+				<p>
+					#{AppBookBean.writer.address.street}<br/>
+					#{AppBookBean.writer.address.city}
+					#{AppBookBean.writer.address.postalCode}
+				</p>
+				
+				<p>
+					<ui:repeat var="b"
+						value="#{AppBookBean.category.writer.toArray()}" varStatus="status">
+						<button class="btn btn-sm btn-outline-primary">
+							#{b.title}</button>
+					</ui:repeat>
+				</p>
+			</div>
 		</div>
 	</ui:define>
 </ui:composition>

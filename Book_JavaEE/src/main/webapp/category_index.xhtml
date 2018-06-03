@@ -22,6 +22,9 @@
 			<div rendered="#{AppBookBean.category}">
 				<h4 class="mt-2">#{AppBookBean.category.nameCategory}</h4>
 				<p>
+					<b class="mt-2 mb-2">Books</b>
+				</p>
+				<p>
 					<ui:repeat var="b"
 						value="#{AppBookBean.category.books.toArray()}" varStatus="status">
 						<button class="btn btn-sm btn-outline-primary">
