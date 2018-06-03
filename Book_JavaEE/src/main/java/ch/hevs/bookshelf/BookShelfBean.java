@@ -32,16 +32,12 @@ public class BookShelfBean implements BookShelf {
 		return (Book) em.createQuery("FROM Book b WHERE b.id=:id").setParameter("id", id).getSingleResult();
 	}
 
+
 	@Override
-	public void insertBook(String isbn, String title, String summary, String language, String year) {
-		Book b = new Book();
-		b.setIsbn(isbn);
-		b.setTitle(title);
-		b.setLanguage(language);
-		b.setSummary(summary);
-		b.setYear(year);
-		em.persist(b);
+	public void insertBook(Book book) {
+		em.merge(book); 
 	}
+	
 
 	@Override
 	public void updateBook(Book book) {
@@ -188,5 +184,7 @@ public class BookShelfBean implements BookShelf {
 			em.persist(b2);
 		}
 	}
+
+
 
 }
