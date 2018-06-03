@@ -10,21 +10,16 @@
 		<div class="col col-5 overflow">
 			<div id="content">
 				<ui:repeat var="b" value="#{AppBookBean.books.toArray()}">
-					<button>
 						<h:form>
-
 							<h:commandLink
-								class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
+								class="mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
 								type="submit" action="#{AppBookBean.getBookFromDatabase(b.id)}">
-				 #{b.title}
-				<ui:repeat var="w" value="#{b.writers.toArray()}" varStatus="status">
+									 #{b.title}
+									<ui:repeat var="w" value="#{b.writers.toArray()}" varStatus="status">
 									<i> #{w.firstname} #{w.lastname} </i>
 								</ui:repeat>
 							</h:commandLink>
 						</h:form>
-
-
-					</button>
 				</ui:repeat>
 			</div>
 		</div>
@@ -61,8 +56,17 @@
 					<ui:repeat var="cat"
 						value="#{AppBookBean.book.categories.toArray()}"
 						varStatus="status">
-						<button class="btn btn-sm btn-outline-primary">
-							#{cat.nameCategory}</button>
+						
+						<h:form >
+						
+						<h:commandLink
+								class="mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
+								type="submit" action="#{AppBookBean.getCategoryFromDatabase(cat.id)}">#{cat.nameCategory}
+									 
+							</h:commandLink>
+							
+							</h:form>
+							
 					</ui:repeat>
 				</p>
 			</div>

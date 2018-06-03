@@ -40,13 +40,14 @@ public class BookShelfBean implements BookShelf {
 	
 
 	@Override
-	public void updateBook(Book book) {
-		Query q = em.createQuery("UPDATE Book b SET b.isbn =:isbn, b.title =:title, b.summary =:summary, b.language =:language, b.year =:year WHERE b.id =:id");
-		q.setParameter("isbn", book.getIsbn());
-		q.setParameter("title", book.getTitle());
-		q.setParameter("summary", book.getSummary());
-		q.setParameter("language", book.getLanguage());
-		q.executeUpdate();
+	public void updateBook(Book book) {		
+		em.persist(book);
+//		Query q = em.createQuery("UPDATE Book b SET b.isbn =:isbn, b.title =:title, b.summary =:summary, b.language =:language, b.year =:year WHERE b.id =:id");
+//		q.setParameter("isbn", book.getIsbn());
+//		q.setParameter("title", book.getTitle());
+//		q.setParameter("summary", book.getSummary());
+//		q.setParameter("language", book.getLanguage());
+//		q.executeUpdate();
 	}
 
 	@Override
@@ -62,7 +63,7 @@ public class BookShelfBean implements BookShelf {
 
 	@Override
 	public Writer getWriter(long id) {
-		return (Writer) em.createQuery("FROM writer w where w.id=:id").setParameter("id", id).getResultList();
+		return (Writer) em.createQuery("FROM Writer w where w.id=:id").setParameter("id", id).getSingleResult();
 	}
 	
 	@Override
@@ -97,7 +98,7 @@ public class BookShelfBean implements BookShelf {
 
 	@Override
 	public Category getCategory(long id) {
-		return (Category) em.createQuery("FROM category c where c.id=:id").setParameter("id", id).getResultList();
+		return (Category) em.createQuery("FROM Category c where c.id=:id").setParameter("id", id).getSingleResult();
 
 	}
 	
