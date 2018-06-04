@@ -52,7 +52,9 @@ public class BookShelfBean implements BookShelf {
 
 	@Override
 	public void deleteBook(Book book) {
-		em.createQuery("DELETE Book b where b.id=:id").setParameter("id", book.getId()); 
+		System.out.println("DELETE BOOK");
+//		em.createQuery("DELETE Book b where b.id=:id").setParameter("id", book.getId()); 
+		em.remove(em.contains(book) ? book : em.merge(book));
 	}
 
 	@Override
@@ -67,13 +69,8 @@ public class BookShelfBean implements BookShelf {
 	}
 	
 	@Override
-	public void insertWriter(String firstname, String lastname, String birthday, String genre, String biography) {
-		Writer w = new Writer();
-		w.setFirstname(firstname);
-		w.setLastname(lastname);
-		w.setGenre(genre);
-		w.setBirthday(birthday);
-		w.setBiography(biography);
+	public void insertWriter(Writer writer) {
+		em.merge(writer); 
 		
 	}
 
@@ -103,10 +100,9 @@ public class BookShelfBean implements BookShelf {
 	}
 	
 	@Override
-	public void insertCategory(String nameCategory) {
-		Category c = new Category();
-		c.setNameCategory(nameCategory);
-		em.persist(c);
+	public void insertCategory(Category category) {
+
+		em.persist(category);
 		
 	}
 

@@ -18,13 +18,13 @@ public interface BookShelf {
 	
 	public Set<Writer> getWriters();
 	public Writer getWriter(long id);
-	public void insertWriter(String firstname, String lastname, String birthday, String genre, String biography);
+	public void insertWriter(Writer writer);
 	public void updateWriter(Writer writer);
 	public void deleteWriter(Writer writer);
 	
 	public Set<Category> getCategories();
 	public Category getCategory(long id);
-	public void insertCategory(String nameCategory);
+	public void insertCategory(Category category);
 	public void updateCategory(Category category);
 
 }

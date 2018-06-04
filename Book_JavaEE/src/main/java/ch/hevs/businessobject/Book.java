@@ -227,6 +227,13 @@ public class Book {
 
 	}
 	
+	public void clearCategories(){
+		categories.clear();
+	}
+	public void clearWriters(){
+		writers.clear();
+	}
+	
 	@Override
 	public String toString() {
 		String result = id + "-" + isbn + "-" + title;

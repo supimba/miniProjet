@@ -31,6 +31,7 @@ public class AppBookBean {
 	private Book bookEdit; 
 	private List<String> writersSelectedId; 
 	private List<String> categoriesSelectedId;
+	private boolean editmode; 
 
 	@PostConstruct
 	public void initialize() throws NamingException {
@@ -43,6 +44,31 @@ public class AppBookBean {
 		this.writers = bookShelf.getWriters();
 		this.categories = bookShelf.getCategories();
 		this.populate();
+	}
+	
+	public void cancelEdit(){
+		 editmode = false;
+	}
+	public void edit() {
+	    editmode = true;
+	}
+
+	public void updateBook(Book book){
+	
+		book.clearCategories();
+		book.clearWriters();
+		
+		for (String writerId : writersSelectedId)
+			book.addWriter(bookShelf.getWriter(Long.valueOf(writerId)));
+		
+		for (String categoryId : categoriesSelectedId)
+			book.addCategory(bookShelf.getCategory(Long.valueOf(categoryId)));
+	
+		bookShelf.updateBook(book);
+	}
+
+	public boolean isEditmode() {
+	    return editmode;
 	}
 
 	public Book getBookEdit() {
@@ -98,5 +124,25 @@ public class AppBookBean {
 	
 		return "book_edit.xhtml";
 	}
+	public List<String> getWritersSelectedId() {
+		return writersSelectedId;
+	}
+	public void setWritersSelectedId(List<String> writersSelectedId) {
+		this.writersSelectedId = writersSelectedId;
+	}
+	public List<String> getCategoriesSelectedId() {
+		return categoriesSelectedId;
+	}
+	public void setCategoriesSelectedId(List<String> categoriesSelectedId) {
+		this.categoriesSelectedId = categoriesSelectedId;
+	}
+	
+	public void deleteBook(){
+		
+		System.out.println("ID BOOK " + this.book.getId());
+		bookShelf.deleteBook(this.book);
+		
+	}
+	
 
 }
