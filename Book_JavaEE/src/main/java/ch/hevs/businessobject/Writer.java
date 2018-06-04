@@ -208,4 +208,9 @@ public class Writer {
 		this.address = address;
 	}
 	
+	public Address getAddress()
+	{
+		return this.address;
+	}
+	
 }

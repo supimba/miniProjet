@@ -22,9 +22,13 @@
 			</div>
 		</div>
 		<div class="col col-5 overflow">
-			<div rendered="#{AppBookBean.book}">
+			<div rendered="#{AppBookBean.book.title!=null}">
 			<h:form>
-				<h4 class="mt-2">#{AppBookBean.book.title}</h4>
+				<h4 class="mt-2">
+				
+									<h:outputText value="#{AppBookBean.book.title}" rendered="#{not AppBookBean.editmode}" />
+					<h:inputText value="#{AppBookBean.book.title}" rendered="#{AppBookBean.editmode}" />
+				</h4>
 				<p class="small">ISBN #{AppBookBean.book.isbn}</p>
 				<p>
 					<b class="mt-2 mb-2"> Summary </b>

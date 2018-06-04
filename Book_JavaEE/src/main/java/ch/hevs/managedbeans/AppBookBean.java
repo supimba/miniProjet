@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -88,6 +89,8 @@ public class AppBookBean {
 	}
 
 	public void getBookFromDatabase(long i) {
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "book_index.xhtml");
+
 		this.book = bookShelf.getBook(i);
 	}
 
@@ -95,12 +98,14 @@ public class AppBookBean {
 		return bookShelf.getWriters();
 	}
 
-	public Writer getWriter(long i) {
+	public Writer getWriter()
+	{
 		return this.writer;
 	}
 	
-	public Writer getWriterFromDatabase(long i) {
-		return bookShelf.getWriter(i);
+	public void getWriterFromDatabase(long i) {
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "writer_index.xhtml");
+		this.writer = bookShelf.getWriter(i);
 	}
 
 	public Set<Category> getCategories() {
@@ -111,8 +116,9 @@ public class AppBookBean {
 		return this.category;
 	}
 	
-	public Category getCategoryFromDatabase(long i) {
-		return this.category = bookShelf.getCategory(i);
+	public void getCategoryFromDatabase(long i) {
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_index.xhtml");
+		this.category = bookShelf.getCategory(i);
 
 	}
 
