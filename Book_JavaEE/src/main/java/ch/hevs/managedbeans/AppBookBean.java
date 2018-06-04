@@ -1,5 +1,6 @@
 package ch.hevs.managedbeans;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
@@ -27,6 +28,9 @@ public class AppBookBean {
 	private Set<Category> categories;
 	private Category category = new Category();
 	private BookShelf bookShelf;
+	private Book bookEdit; 
+	private List<String> writersSelectedId; 
+	private List<String> categoriesSelectedId;
 
 	@PostConstruct
 	public void initialize() throws NamingException {
@@ -39,6 +43,14 @@ public class AppBookBean {
 		this.writers = bookShelf.getWriters();
 		this.categories = bookShelf.getCategories();
 		this.populate();
+	}
+
+	public Book getBookEdit() {
+		return bookEdit;
+	}
+
+	public void setBookEdit(Book bookEdit) {
+		this.bookEdit = book;
 	}
 
 	public Set<Book> getBooks() {
@@ -80,6 +92,11 @@ public class AppBookBean {
 
 	public void populate() {
 		bookShelf.populate();
+	}
+	
+	public String editBook(Book book){
+	
+		return "book_edit.xhtml";
 	}
 
 }
