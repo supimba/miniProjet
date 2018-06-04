@@ -8,8 +8,7 @@
 
 
 	<!-- Web -->
-	
-		<persistence-unit name="BookShelfPU">
+	<persistence-unit name="BookShelfPU">
 		<jta-data-source>java:/labsDS</jta-data-source>
 		
 		<class>ch.hevs.businessobject.Book</class>
@@ -26,7 +25,8 @@
 	</persistence-unit>
 		
 
-	
+		
+</persistence>
 	<!-- jUnit -->
 	<!-- persistence-unit name="BookShelfPU">
 
@@ -47,7 +47,6 @@
 
 		</properties>
 
-	</persistence-unit-->
-	 
-	
-</persistence>
+	</persistence-unit -->
+	  
+
