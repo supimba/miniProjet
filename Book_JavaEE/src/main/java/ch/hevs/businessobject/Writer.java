@@ -41,6 +41,7 @@ public class Writer {
 	private String biography;
 	@Embedded
 	private Address address;
+	
 	private String name; 
 	
 	// relations
@@ -49,10 +50,12 @@ public class Writer {
 	
 	// constructors
 	public Writer(){
-		books = new HashSet(); 
+		books = new HashSet();
+		address = new Address(); 
 	}
 	public Writer(String lastname, String firstname, String genre, Date birthday, String biography) {
 		books = new HashSet<>(); 
+		address = new Address(); 
 		this.lastname = lastname;
 		this.firstname = firstname;
 		this.genre = genre;
@@ -151,17 +154,18 @@ public class Writer {
 	 *  
 	 * @param String  the birthday of the writer
 	 */
-	public void setBirthday(String birthday) {
-		String someDate = birthday;
-		SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
-		Date date = new Date();
-		try {
-			date = sdf.parse(someDate);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.birthday = date;
+	public void setBirthday(Date birthday) {
+//		System.out.println("SET BIRTH");
+//		String someDate = birthday;
+//		SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
+//		Date date = new Date();
+//		try {
+//			date = sdf.parse(someDate);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		this.birthday = birthday;
 	}
 
 	/**

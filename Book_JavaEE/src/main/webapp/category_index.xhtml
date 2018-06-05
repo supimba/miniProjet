@@ -17,6 +17,11 @@
 							</h:commandLink>
 						</h:form>
 			</ui:repeat>
+							<p>
+								<h:form>
+				<h:commandButton value="Create category" class="btn btn-warning" type="submit" action="#{AppBookBean.createCategory}"> </h:commandButton>
+			</h:form>
+				</p>
 		</div>
 		<div class="col col-5 overflow">
 			<div rendered="#{AppBookBean.category}">
@@ -38,6 +43,8 @@
 							</h:form>
 					</ui:repeat>
 				</p>
+				
+
 			</div>
 		</div>
 	</ui:define>

@@ -17,6 +17,10 @@
 							</h:commandLink>
 						</h:form>
 			</ui:repeat>
+			
+			<h:form>
+				<h:commandButton value="Create writer" class="btn btn-warning" type="submit" action="#{WriterBean.createWriter}"> </h:commandButton>
+			</h:form>
 		</div>
 		<div class="col col-5 overflow">
 				<h4 class="mt-2">#{AppBookBean.writer.firstname} #{AppBookBean.writer.lastname}</h4>
@@ -46,7 +50,7 @@
 							<h:form >
 						
 						<h:commandButton 
-								class="mt-1 mb-1 btn btn-outline-primary btn-sm"
+								class="form-control"
 								type="submit" action="#{AppBookBean.getBookFromDatabase(b.id)}">#{b.title}
 								 
 							</h:commandButton>
@@ -54,6 +58,7 @@
 							</h:form>
 					</ui:repeat>
 				</p>
+
 		</div>
 	</ui:define>
 </ui:composition>

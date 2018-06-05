@@ -95,7 +95,10 @@ public class AppBookBean {
 
 		this.book = bookShelf.getBook(i);
 	}
-
+	public void createNewBook(){
+		
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "book_create.xhtml");
+	}
 	public Set<Writer> getWriters() {
 		return bookShelf.getWriters();
 	}
@@ -122,6 +125,9 @@ public class AppBookBean {
 		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_index.xhtml");
 		this.category = bookShelf.getCategory(i);
 
+	}
+	public void createCategory(){
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_create.xhtml");
 	}
 
 	public void populate() {

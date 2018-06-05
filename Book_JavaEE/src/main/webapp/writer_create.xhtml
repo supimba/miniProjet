@@ -2,73 +2,97 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-   xmlns:h="http://java.sun.com/jsf/html"
-   	xmlns:f="http://java.sun.com/jsf/core"
-   xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
-		<h:outputLabel value="Ajouter un auteur"></h:outputLabel>
-		<br></br>
-		<div class="row">
-			<h:form>
-				<div class="col-md-6">
-					<div class="form-group">
-						<h:outputLabel>Prénom de l'auteur<label>*</label></h:outputLabel>
-						<h:inputText value="#{WriterBean.writer.firstname}" required="true" requiredMessaeg="Veuillez saisir le nom de la catégorie" size="20" maxlength="60" />
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<h:outputLabel >Nom de l'auteur<label>*</label></h:outputLabel>
-						<h:inputText value="#{WriterBean.writer.lastname}" required="true" size="20" maxlength="60" />
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<h:outputLabel >Biography<label>*</label></h:outputLabel>
-						<h:inputTextarea value="#{WriterBean.writer.biography}" required="true"> </h:inputTextarea>
-			
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<h:outputLabel >Date de naissance<label>*</label></h:outputLabel>
-						<h:inputText value="#{WriterBean.writer.birthday}" required="true"  size="20" maxlength="60" />
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<h:outputLabel >Genre<label>*</label></h:outputLabel>
-						<h:inputText value="#{WriterBean.writer.genre}" required="true" requiredMessaeg="Veuillez saisir le nom de la catégorie" size="20" maxlength="60" />
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<h:outputLabel >Ville<label>*</label></h:outputLabel>
-						<h:inputText value="#{WriterBean.writer.address.city}" required="true" requiredMessaeg="Veuillez saisir le nom de la catégorie" size="20" maxlength="60" />
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<h:outputLabel >Code postale<label>*</label></h:outputLabel>
-						<h:inputText value="#{WriterBean.writer.address.postalCode}" required="true" requiredMessaeg="Veuillez saisir le nom de la catégorie" size="20" maxlength="60" />
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<h:outputLabel >Rue<label>*</label></h:outputLabel>
-						<h:inputText value="#{WriterBean.writer.address.street}" required="true" requiredMessaeg="Veuillez saisir le nom de la catégorie" size="20" maxlength="60" />
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-group">
-						<h:commandButton value="Créer un auteur" action="#{WriterBean.insertWriter(WriterBean.writer)}" ></h:commandButton>
-					</div>
-				</div>			
-			</h:form>
-		</div>
+		<div class="col col-5">
+			<h:outputLabel value="Ajouter un auteur"></h:outputLabel>
+				<h:form>
+					<p>
+						<b class="mt-2 mb-2">First name</b>
+					</p>
+					<h:inputText class="form-control" value="#{WriterBean.writer.firstname}" required="true"
+						size="20"
+						maxlength="60" />
+
+
+
+					<p>
+						<b class="mt-2 mb-2">Last name</b>
+					</p>
+
+					<h:inputText class="form-control" value="#{WriterBean.writer.lastname}" required="true"
+						size="20" maxlength="60" />
+
+
+					<p>
+						<b class="mt-2 mb-2">Biography</b>
+					</p>
+
+					<h:inputTextarea class="form-control" value="#{WriterBean.writer.biography}"
+						required="true">
+					</h:inputTextarea>
+
+
+
+
+
+					<p>
+						<b class="mt-2 mb-2">Birthday</b>
+					</p>
+					<h:inputText value="#{WriterBean.writer.birthday}"  required="true" converter="dateConverter"
+						size="20" maxlength="60" />
+		
+												
+
+
+
+					<p>
+						<b class="mt-2 mb-2">Genre</b>
+					</p>
+					<h:inputText value="#{WriterBean.writer.genre}" required="true"
+						size="20"
+						maxlength="60" />
+
+
+
+
+					<p>
+						<b class="mt-2 mb-2">City</b>
+					</p>
+					<h:inputText value="#{WriterBean.writer.address.city}"
+						required="true"
+						 size="20"
+						maxlength="60" />
+
+
+		
+						<p>
+							<b class="mt-2 mb-2">Postal code</b>
+						</p>
+
+						<h:inputText value="#{WriterBean.writer.address.postalCode}"
+							required="true"
+							
+							size="20" maxlength="60" />
+
+						<p>
+							<b class="mt-2 mb-2">Street</b>
+						</p>
+
+						<h:inputText value="#{WriterBean.writer.address.street}"
+							required="true"
+							
+							size="20" maxlength="60" />
+
+						<h:commandButton class="btn btn-success" value="Create"
+							action="#{WriterBean.insertWriter(WriterBean.writer)}"></h:commandButton>
+				</h:form>
+			</div>
 	</ui:define>
 </ui:composition>
 </html>

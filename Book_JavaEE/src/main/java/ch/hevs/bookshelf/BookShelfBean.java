@@ -1,5 +1,7 @@
 package ch.hevs.bookshelf;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -42,18 +44,10 @@ public class BookShelfBean implements BookShelf {
 	@Override
 	public void updateBook(Book book) {		
 		em.persist(book);
-//		Query q = em.createQuery("UPDATE Book b SET b.isbn =:isbn, b.title =:title, b.summary =:summary, b.language =:language, b.year =:year WHERE b.id =:id");
-//		q.setParameter("isbn", book.getIsbn());
-//		q.setParameter("title", book.getTitle());
-//		q.setParameter("summary", book.getSummary());
-//		q.setParameter("language", book.getLanguage());
-//		q.executeUpdate();
 	}
 
 	@Override
 	public void deleteBook(Book book) {
-		System.out.println("DELETE BOOK");
-//		em.createQuery("DELETE Book b where b.id=:id").setParameter("id", book.getId()); 
 		em.remove(em.contains(book) ? book : em.merge(book));
 	}
 
@@ -70,6 +64,8 @@ public class BookShelfBean implements BookShelf {
 	
 	@Override
 	public void insertWriter(Writer writer) {
+		
+		System.out.println("INSERT WRITER");
 		em.merge(writer); 
 		
 	}
@@ -116,6 +112,7 @@ public class BookShelfBean implements BookShelf {
 	public void populate() {
 
 		if (this.getBooks().size() == 0) {
+			SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
 			Book b1 = new Book();
 			b1.setIsbn("2266083260");
 			b1.setTitle("Les Fleurs Du Mal");
@@ -127,7 +124,15 @@ public class BookShelfBean implements BookShelf {
 			Writer w1 = new Writer();
 			w1.setLastname("Baudelaire");
 			w1.setFirstname("Charles");
-			w1.setBirthday("31.08.1980");
+			Date d1 = new Date();
+			String birth1 ="31.08.1980";
+			try {
+				d1 = sdf.parse(birth1);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			w1.setBirthday(d1);
 			w1.setGenre("homme");
 			w1.setBiography(
 					"Charles Baudelaire est un poète français. Né à Paris le 9 avril 1821, il meurt dans la même ville le 31 août 1867 (à 46 ans).");
@@ -160,7 +165,15 @@ public class BookShelfBean implements BookShelf {
 			w2.setFirstname("Jean-Claude");
 			w2.setLastname("Ameisen");
 			w2.setGenre("Homme");
-			w2.setBirthday("22.12.1951");
+			Date d2 = new Date();
+			String birth2 = "22.12.1951";
+			try {
+				d2 = sdf.parse(birth2);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			w2.setBirthday(d2);
 			w2.setBiography(
 					"Jean Claude Ameisen, né le 22 décembre 1951 à New York, est un médecin, immunologiste et chercheur français en biologie."
 							+ "Il est directeur du Centre d'études du vivant de l'Institut des humanités de Paris de l'université Paris Diderot et président "
@@ -179,6 +192,49 @@ public class BookShelfBean implements BookShelf {
 			b2.addWriter(w1);
 
 			em.persist(b2);
+			
+			
+			Book b3 = new Book();
+			b3.setIsbn("2070366146");
+			b3.setTitle("Fictions");
+			b3.setLanguage("Français");
+			b3.setSummary(
+					"Des nombreux problèmes qui exercèrent la téméraire perspicacité de Lönnrot, aucun ne fut aussi étrange - aussi rigoureusement étrange, dirons-nous - que la série périodique de meurtres qui culminèrent dans la propriété de Triste-Le-Roy, parmi l'interminable odeur des eucalyptus. Il est vrai qu'Eric Lönnrot ne réussit pas à empêcher le dernier crime, mais il est indiscutable qu'il l'avait prévu...");
+			b3.setYear("1974");
+
+			Writer w3 = new Writer();
+			w3.setFirstname("Jorge Luis");
+			w3.setLastname("Borges");
+			w3.setGenre("Homme");
+			
+			Date d3 = new Date();
+			String birth3 = "12.08.1900";
+			try {
+				d3 = sdf.parse(birth3);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			w3.setBirthday(d3);
+			w3.setBiography(
+					"Jorge Luis Borges de son nom complet Jorge Francisco Isidoro Luis Borges Acevedonote 1, est un écrivain argentin de prose et de poésie, né le 24 août 1899 à Buenos Aires et mort à Genève le 14 juin 1986. Ses travaux dans les champs de l’essai et de la nouvelle sont considérés comme des classiques de la littérature du xxe siècle.");
+			Address a3 = new Address();
+			a3.setCity("Buenos Aires");
+			a3.setStreet("5 Cino-Del-Duca");
+			a3.setPostalCode("10003");
+			w3.setAddress(a3);
+
+			Category c3 = new Category();
+			c3.setNameCategory("Nouvelle");
+			Category c4 = new Category();
+
+			c4.setNameCategory("Fiction");
+
+			b3.addCategory(c3);
+			b3.addCategory(c4);
+			b3.addWriter(w3);
+
+			em.persist(b3);
 		}
 	}
 
