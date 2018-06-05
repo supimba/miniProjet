@@ -22,12 +22,11 @@
 			</div>
 		</div>
 		<div class="col col-5 overflow">
-			<div rendered="#{AppBookBean.book.title!=null}">
+			<h:panelGroup rendered="#{AppBookBean.book.title!=null}">
 			<h:form>
 				<h4 class="mt-2">
-				
-									<h:outputText value="#{AppBookBean.book.title}" rendered="#{not AppBookBean.editmode}" />
-					<h:inputText value="#{AppBookBean.book.title}" rendered="#{AppBookBean.editmode}" />
+					<h:outputText value="#{AppBookBean.book.title}" rendered="#{not AppBookBean.editmode}" />
+					<h:inputText class="form-control" value="#{AppBookBean.book.title}" rendered="#{AppBookBean.editmode}" />
 				</h4>
 				<p class="small">ISBN #{AppBookBean.book.isbn}</p>
 				<p>
@@ -35,21 +34,21 @@
 				</p>
 				<p>
 					<h:outputText value="#{AppBookBean.book.summary}" rendered="#{not AppBookBean.editmode}" />
-					<h:inputText value="#{AppBookBean.book.summary}" rendered="#{AppBookBean.editmode}" />
+					<h:inputTextarea class="form-control" value="#{AppBookBean.book.summary}" rendered="#{AppBookBean.editmode}" />
 				</p>
 				<p>
 					<b class="mt-2 mb-2"> Year </b>
 				</p>
 				<p>
 					<h:outputText value="#{AppBookBean.book.year}" rendered="#{not AppBookBean.editmode}" />
-					<h:inputText value="#{AppBookBean.book.year}" rendered="#{AppBookBean.editmode}" />
+					<h:inputText class="form-control" value="#{AppBookBean.book.year}" rendered="#{AppBookBean.editmode}" />
 				</p>
 				<p>
 					<b class="mt-2 mb-2"> Language </b>
 				</p>
 				<p>
 					<h:outputText value="#{AppBookBean.book.language}" rendered="#{not AppBookBean.editmode}" />
-					<h:inputText value="#{AppBookBean.book.language}" rendered="#{AppBookBean.editmode}" />
+					<h:inputText class="form-control" value="#{AppBookBean.book.language}" rendered="#{AppBookBean.editmode}" />
 				</p>
 				<p>
 					<b class="mt-2 mb-2">Author(s)</b>
@@ -58,7 +57,7 @@
 					<ui:repeat var="writers" value="#{AppBookBean.book.writers.toArray()}" varStatus="status" 	>
 						<h:commandButton value="#{writers.name}" styleClass="btn btn-sm btn-outline-primary" rendered="#{not AppBookBean.editmode}" />
 					</ui:repeat>
-					<h:selectManyListbox value="#{AppBookBean.writersSelectedId}" rendered="#{AppBookBean.editmode}">
+					<h:selectManyListbox class="form-control" value="#{AppBookBean.writersSelectedId}" rendered="#{AppBookBean.editmode}">
 						<f:selectItems value="#{AppBookBean.writers}" var="writer" itemValue="#{writer.id}" itemLabel="#{writer.name}" ></f:selectItems>
 					</h:selectManyListbox>
 				</p>
@@ -71,30 +70,27 @@
 							<h:commandLink class="mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"  rendered="#{not AppBookBean.editmode}" type="submit" action="#{AppBookBean.getCategoryFromDatabase(cat.id)}">#{cat.nameCategory} </h:commandLink>
 	
 					</ui:repeat>
-					<h:selectManyListbox value="#{AppBookBean.categoriesSelectedId}" rendered="#{AppBookBean.editmode}">
+					<h:selectManyListbox class="form-control" value="#{AppBookBean.categoriesSelectedId}" rendered="#{AppBookBean.editmode}">
 						<f:selectItems value="#{AppBookBean.categories}" var="cat" itemValue="#{cat.id}" itemLabel="#{cat.nameCategory}" ></f:selectItems>
 					</h:selectManyListbox>
 				</p>
 
 				
-					<h:commandButton  value="Save" action="#{AppBookBean.updateBook(AppBookBean.book)}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
+					<h:commandButton class="btn btn-success" value="Save" action="#{AppBookBean.updateBook(AppBookBean.book)}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
 				</h:form>
-				<p>
-				<h:form>
-					<h:commandButton  value="Edit" action="#{AppBookBean.edit}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
-				</h:form>
-				<h:form>
-					<h:commandButton  value="Delete" action="#{AppBookBean.deleteBook()}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
-				</h:form>
-				<h:form>
-					<h:commandButton  value="Cancel" action="#{AppBookBean.cancelEdit}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
-				</h:form>
-
-				</p>
-
 				
+				<h:form>
+					<h:commandButton class="btn btn-success"  value="Edit" action="#{AppBookBean.edit}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
+				</h:form>
+				<h:form>
+					<h:commandButton class="btn btn-danger"  value="Delete" action="#{AppBookBean.deleteBook()}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
+				</h:form>
+				<h:form>
+					<h:commandButton class="btn btn-danger"  value="Cancel" action="#{AppBookBean.cancelEdit}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
+				</h:form>
+				</h:panelGroup>
 			</div>
-		</div>
+		
 	</ui:define>
 </ui:composition>
 </html>

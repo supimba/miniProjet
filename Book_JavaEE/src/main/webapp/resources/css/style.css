@@ -85,3 +85,9 @@ h4
 {
 	overflow-y:scroll;
 }
+
+
+form
+{
+	display:inline;
+}

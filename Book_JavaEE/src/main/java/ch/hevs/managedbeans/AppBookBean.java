@@ -64,8 +64,10 @@ public class AppBookBean {
 		
 		for (String categoryId : categoriesSelectedId)
 			book.addCategory(bookShelf.getCategory(Long.valueOf(categoryId)));
-	
+		
 		bookShelf.updateBook(book);
+		this.editmode = false;
+
 	}
 
 	public boolean isEditmode() {
@@ -127,7 +129,6 @@ public class AppBookBean {
 	}
 	
 	public String editBook(Book book){
-	
 		return "book_edit.xhtml";
 	}
 	public List<String> getWritersSelectedId() {
