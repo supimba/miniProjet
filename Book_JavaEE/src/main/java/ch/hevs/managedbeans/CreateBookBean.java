@@ -32,7 +32,7 @@ public class CreateBookBean {
 	private List<String> categorySelectedId; 
 
 	private Book book = new Book();
-
+	private String toDelete; 
 	@PostConstruct
 	public void initialize() throws NamingException {
 		// use JNDI to inject reference to bank EJB
