@@ -10,8 +10,8 @@
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
 		<managed-bean>
-		<managed-bean-name>CreateBookBean</managed-bean-name>
-		<managed-bean-class>ch.hevs.managedbeans.CreateBookBean</managed-bean-class>
+		<managed-bean-name>BookBean</managed-bean-name>
+		<managed-bean-class>ch.hevs.managedbeans.BookBean</managed-bean-class>
 		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>

@@ -30,7 +30,7 @@ public class AppBookBean {
 	private Set<Category> categories;
 	private Category category = new Category();
 	private BookShelf bookShelf;
-	private Book bookEdit; 
+
 	private List<String> writersSelectedId; 
 	private List<String> categoriesSelectedId;
 	private boolean editmode; 
@@ -45,15 +45,10 @@ public class AppBookBean {
 		this.books = bookShelf.getBooks();
 		this.writers = bookShelf.getWriters();
 		this.categories = bookShelf.getCategories();
-		this.populate();
+//		this.populate();
 	}
 	
-	public void cancelEdit(){
-		 editmode = false;
-	}
-	public void edit() {
-	    editmode = true;
-	}
+
 
 	public void updateBook(Book book){
 	
@@ -71,35 +66,8 @@ public class AppBookBean {
 
 	}
 
-	public boolean isEditmode() {
-	    return editmode;
-	}
 
-	public Book getBookEdit() {
-		return bookEdit;
-	}
 
-	public void setBookEdit(Book bookEdit) {
-		this.bookEdit = book;
-	}
-
-	public Set<Book> getBooks() {
-		return bookShelf.getBooks();
-	}
-
-	public Book getBook() {
-		return this.book;
-	}
-
-	public void getBookFromDatabase(long i) {
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "book_index.xhtml");
-
-		this.book = bookShelf.getBook(i);
-	}
-	public void createNewBook(){
-		
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "book_create.xhtml");
-	}
 	public Set<Writer> getWriters() {
 		return bookShelf.getWriters();
 	}
@@ -109,10 +77,7 @@ public class AppBookBean {
 		return this.writer;
 	}
 	
-	public void getWriterFromDatabase(long i) {
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "writer_index.xhtml");
-		this.writer = bookShelf.getWriter(i);
-	}
+
 
 	public Set<Category> getCategories() {
 		return bookShelf.getCategories();
@@ -122,22 +87,14 @@ public class AppBookBean {
 		return this.category;
 	}
 	
-	public void getCategoryFromDatabase(long i) {
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_index.xhtml");
-		this.category = bookShelf.getCategory(i);
 
-	}
 	public void createCategory(){
 		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_create.xhtml");
 	}
 
-	public void populate() {
-		bookShelf.populate();
-	}
+
 	
-	public String editBook(Book book){
-		return "book_edit.xhtml";
-	}
+
 	public List<String> getWritersSelectedId() {
 		return writersSelectedId;
 	}
@@ -151,11 +108,7 @@ public class AppBookBean {
 		this.categoriesSelectedId = categoriesSelectedId;
 	}
 	
-	public void deleteBook(){
-		bookShelf.deleteBook(this.book);
-		this.book = new Book(); 
-		
-	}
+
 	
 
 }
