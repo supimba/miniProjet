@@ -58,7 +58,7 @@
 				</p>
 				<p>
 					<ui:repeat var="writers" value="#{AppBookBean.book.writers.toArray()}" varStatus="status" 	>
-						<h:commandLink value="#{writers.name}" styleClass="btn btn-sm btn-outline-primary" rendered="#{not AppBookBean.editmode}" />
+						<h:commandLink value="#{writers.name}" styleClass="btn btn-sm btn-outline-primary" type="submit" rendered="#{not AppBookBean.editmode}"  action="#{AppBookBean.getWriterFromDatabase(writers.id)}"/>
 					</ui:repeat>
 					<h:selectManyListbox class="form-control" value="#{AppBookBean.writersSelectedId}" rendered="#{AppBookBean.editmode}">
 						<f:selectItems value="#{AppBookBean.writers}" var="writer" itemValue="#{writer.id}" itemLabel="#{writer.name}" ></f:selectItems>

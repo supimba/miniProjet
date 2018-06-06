@@ -122,10 +122,7 @@ public class AppBookBean {
 		this.writer = writer;
 	}
 	
-	public void getWriterFromDatabase(long i) {
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "writer_index.xhtml");
-		this.writer = bookShelf.getWriter(i);
-	}
+
 	public void deleteWriter(){
 		bookShelf.deleteWriter(this.writer);
 		this.writer = new Writer(); 
@@ -151,6 +148,11 @@ public class AppBookBean {
 	public void getCategoryFromDatabase(long i) {
 		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_index.xhtml");
 		this.category = bookShelf.getCategory(i);
+
+	}
+	public void getWriterFromDatabase(long i) {
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "writer_index.xhtml");
+		this.writer = bookShelf.getWriter(i);
 
 	}
 	public void createCategory(){
