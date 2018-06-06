@@ -74,7 +74,7 @@ public class QueryBook {
 			Writer w1 = new Writer();
 			w1.setLastname("Baudelaire");
 			w1.setFirstname("Charles");
-			w1.setBirthday("31.08.1980");
+			//w1.setBirthday("31.08.1980");
 			w1.setGenre("homme");
 			w1.setBiography("Charles Baudelaire est un poète français. Né à Paris le 9 avril 1821, il meurt dans la même ville le 31 août 1867 (à 46 ans).");
 			
@@ -107,7 +107,7 @@ public class QueryBook {
 			w2.setFirstname("Jean-Claude");
 			w2.setLastname("Ameisen");
 			w2.setGenre("Homme");
-			w2.setBirthday("22.12.1951");
+			//w2.setBirthday("22.12.1951");
 			w2.setBiography("Jean Claude Ameisen, né le 22 décembre 1951 à New York, est un médecin, immunologiste et chercheur français en biologie."
 					+ "Il est directeur du Centre d'études du vivant de l'Institut des humanités de Paris de l'université Paris Diderot et président "
 					+ "du Comité consultatif national d'éthique (2012-2016).");

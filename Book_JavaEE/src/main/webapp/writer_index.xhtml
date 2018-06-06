@@ -22,24 +22,42 @@
 				<h:commandButton value="Create writer" class="btn btn-warning" type="submit" action="#{WriterBean.createWriter}"> </h:commandButton>
 			</h:form>
 		</div>
+		
 		<div class="col col-5 overflow">
-				<h4 class="mt-2">#{AppBookBean.writer.firstname} #{AppBookBean.writer.lastname}</h4>
+		<h:form>
+				<h4 class="mt-2">
+				
+				<h:outputText value="#{AppBookBean.writer.name}" rendered="#{not AppBookBean.editmode}" />
+				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.firstname}" rendered="#{AppBookBean.editmode}" />
+				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.lastname}" rendered="#{AppBookBean.editmode}" />
+				</h4>
 				<p>
 					<b class="mt-2 mb-2">Biography</b>
 				</p>
-				<p>#{AppBookBean.writer.biography}</p>
+				<p>
+				<h:outputText value="#{AppBookBean.writer.biography}" rendered="#{not AppBookBean.editmode}" />
+				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.biography}" rendered="#{AppBookBean.editmode}" />
+				
+				</p>
 				<p>
 					<b class="mt-2 mb-2">Date of Birth</b>
 				</p>
-				<p>#{AppBookBean.writer.birthday}</p>
+				<p>
+				<h:outputText value="#{AppBookBean.writer.birthday}" rendered="#{not AppBookBean.editmode}" />
+				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.birthday}" converter="dateConverter" rendered="#{AppBookBean.editmode}" />
+				
+				</p>
 				<p>
 					<b class="mt-2 mb-2">Address</b>
 				</p>
 				
 				<p>
-					#{AppBookBean.writer.address.street}<br/>
-					#{AppBookBean.writer.address.city}
-					#{AppBookBean.writer.address.postalCode}
+				<h:outputText value="#{AppBookBean.writer.address.street}" rendered="#{not AppBookBean.editmode}" />
+				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.address.street}" rendered="#{AppBookBean.editmode}" />
+				<h:outputText value="#{AppBookBean.writer.address.city}" rendered="#{not AppBookBean.editmode}" />
+				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.address.city}" rendered="#{AppBookBean.editmode}" />
+				<h:outputText value="#{AppBookBean.writer.address.postalCode}" rendered="#{not AppBookBean.editmode}" />
+				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.address.postalCode}" rendered="#{AppBookBean.editmode}" />
 				</p>
 				
 				<p>
@@ -47,18 +65,30 @@
 						value="#{AppBookBean.writer.books.toArray()}" varStatus="status">
 				
 			
-							<h:form >
-						
-						<h:commandButton 
-								class="form-control"
-								type="submit" action="#{AppBookBean.getBookFromDatabase(b.id)}">#{b.title}
-								 
-							</h:commandButton>
 							
-							</h:form>
+						
+						<h:commandLink
+								class="form-control"
+								type="submit" rendered="#{not AppBookBean.editmode}" action="#{AppBookBean.getBookFromDatabase(b.id)}">#{b.title}
+								 
+							</h:commandLink>
+							
 					</ui:repeat>
+					<h:selectManyListbox class="form-control" value="#{AppBookBean.booksSelectedId}" rendered="#{AppBookBean.editmode}">
+						<f:selectItems value="#{AppBookBean.books}" var="book" itemValue="#{book.id}" itemLabel="#{book.title}" ></f:selectItems>
+					</h:selectManyListbox>
 				</p>
-
+					<h:commandButton class="btn btn-success" value="Save" action="#{AppBookBean.updateWriter(AppBookBean.writer)}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
+		</h:form>
+						<h:form>
+					<h:commandButton class="btn btn-success"  value="Edit" action="#{AppBookBean.edit}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
+				</h:form>
+				<h:form>
+					<h:commandButton class="btn btn-danger"  value="Delete" action="#{AppBookBean.deleteWriter}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
+				</h:form>
+				<h:form>
+					<h:commandButton class="btn btn-danger"  value="Cancel" action="#{AppBookBean.cancelEdit}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
+				</h:form>
 		</div>
 	</ui:define>
 </ui:composition>

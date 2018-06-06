@@ -5,8 +5,6 @@ import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -33,6 +31,7 @@ public class AppBookBean {
 	private Book bookEdit; 
 	private List<String> writersSelectedId; 
 	private List<String> categoriesSelectedId;
+	private List<String> booksSelectedId; 
 	private boolean editmode; 
 
 	@PostConstruct
@@ -104,14 +103,32 @@ public class AppBookBean {
 		return bookShelf.getWriters();
 	}
 
+	public void updateWriter(Writer writer){
+		writer.clearBooks();
+		
+		for (String bookId : booksSelectedId)
+			writer.addBook(bookShelf.getBook(Long.valueOf(bookId)));
+		
+		bookShelf.updateWriter(writer);
+		this.editmode = false;
+	}
 	public Writer getWriter()
 	{
 		return this.writer;
 	}
 	
+	public void setWriter(Writer writer)
+	{
+		this.writer = writer;
+	}
+	
 	public void getWriterFromDatabase(long i) {
 		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "writer_index.xhtml");
 		this.writer = bookShelf.getWriter(i);
+	}
+	public void deleteWriter(){
+		bookShelf.deleteWriter(this.writer);
+		this.writer = new Writer(); 
 	}
 
 	public Set<Category> getCategories() {
@@ -160,6 +177,14 @@ public class AppBookBean {
 		this.categoriesSelectedId = categoriesSelectedId;
 	}
 	
+	public List<String> getBooksSelectedId() {
+		return booksSelectedId;
+	}
+
+	public void setBooksSelectedId(List<String> booksSelectedId) {
+		this.booksSelectedId = booksSelectedId;
+	}
+
 	public void deleteBook(){
 		bookShelf.deleteBook(this.book);
 		this.book = new Book(); 

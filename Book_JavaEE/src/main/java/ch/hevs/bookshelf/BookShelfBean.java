@@ -72,13 +72,13 @@ public class BookShelfBean implements BookShelf {
 
 	@Override
 	public void updateWriter(Writer writer) {
-		// TODO Auto-generated method stub
+		em.persist(writer);
 		
 	}
 
 	@Override
 	public void deleteWriter(Writer writer) {
-		// TODO Auto-generated method stub
+		em.remove(em.contains(writer) ? writer : em.merge(writer));
 		
 	}
 	

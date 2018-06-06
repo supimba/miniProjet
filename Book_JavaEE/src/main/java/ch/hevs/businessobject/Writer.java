@@ -216,5 +216,8 @@ public class Writer {
 	{
 		return this.address;
 	}
+	public void clearBooks(){
+		books.clear();
+	}
 	
 }

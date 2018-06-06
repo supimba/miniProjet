@@ -29,7 +29,7 @@ public class WriterBean {
 	
 	public String insertWriter(Writer writer) {
 		bookshelf.insertWriter(writer);
-		return "writer_index.xthml"; 
+		return "writer_index.xhtml"; 
 	}
 	
 	public void createWriter() {
