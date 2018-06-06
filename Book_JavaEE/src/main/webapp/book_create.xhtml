@@ -10,7 +10,7 @@
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
 
-<div class="col col-5">
+<div class="col col-10 overflow">
 				<h:form id="insertBookForm">
 						
 					<h3> Create a new book </h3>
@@ -18,7 +18,7 @@
 					<h4 class="mt-2">
 						<h:outputLabel for="title">Title<label>*</label>
 						</h:outputLabel>
-						<h:inputText id="title" value="#{CreateBookBean.book.title}"
+						<h:inputText class="form-control" id="title" value="#{CreateBookBean.book.title}"
 							required="true" size="20" maxlength="60" />
 					</h4>
 

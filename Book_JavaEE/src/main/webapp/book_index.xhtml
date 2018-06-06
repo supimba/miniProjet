@@ -58,7 +58,7 @@
 				</p>
 				<p>
 					<ui:repeat var="writers" value="#{AppBookBean.book.writers.toArray()}" varStatus="status" 	>
-						<h:commandButton value="#{writers.name}" styleClass="btn btn-sm btn-outline-primary" rendered="#{not AppBookBean.editmode}" />
+						<h:commandLink value="#{writers.name}" styleClass="btn btn-sm btn-outline-primary" rendered="#{not AppBookBean.editmode}" />
 					</ui:repeat>
 					<h:selectManyListbox class="form-control" value="#{AppBookBean.writersSelectedId}" rendered="#{AppBookBean.editmode}">
 						<f:selectItems value="#{AppBookBean.writers}" var="writer" itemValue="#{writer.id}" itemLabel="#{writer.name}" ></f:selectItems>
@@ -70,7 +70,7 @@
 				<p>
 					<ui:repeat var="cat" value="#{AppBookBean.book.categories.toArray()}" varStatus="status">
 						
-							<h:commandLink class="mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"  rendered="#{not AppBookBean.editmode}" type="submit" action="#{AppBookBean.getCategoryFromDatabase(cat.id)}">#{cat.nameCategory} </h:commandLink>
+							<h:commandLink class="mt-1 mb-1 btn btn-outline-primary btn-sm"  rendered="#{not AppBookBean.editmode}" type="submit" action="#{AppBookBean.getCategoryFromDatabase(cat.id)}">#{cat.nameCategory} </h:commandLink>
 	
 					</ui:repeat>
 					<h:selectManyListbox class="form-control" value="#{AppBookBean.categoriesSelectedId}" rendered="#{AppBookBean.editmode}">

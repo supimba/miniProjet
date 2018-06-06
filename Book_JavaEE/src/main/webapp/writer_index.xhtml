@@ -24,12 +24,13 @@
 		</div>
 		
 		<div class="col col-5 overflow">
+		<h:panelGroup rendered="#{AppBookBean.writer.firstname!=null}">
 		<h:form>
 				<h4 class="mt-2">
 				
 				<h:outputText value="#{AppBookBean.writer.name}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.firstname}" rendered="#{AppBookBean.editmode}" />
-				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.lastname}" rendered="#{AppBookBean.editmode}" />
+				<h:inputText class="form-control" value="#{AppBookBean.writer.firstname}" rendered="#{AppBookBean.editmode}" />
+				<h:inputText class="form-control" value="#{AppBookBean.writer.lastname}" rendered="#{AppBookBean.editmode}" />
 				</h4>
 				<p>
 					<b class="mt-2 mb-2">Biography</b>
@@ -44,7 +45,7 @@
 				</p>
 				<p>
 				<h:outputText value="#{AppBookBean.writer.birthday}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.birthday}" converter="dateConverter" rendered="#{AppBookBean.editmode}" />
+				<h:inputText class="form-control" value="#{AppBookBean.writer.birthday}" converter="dateConverter" rendered="#{AppBookBean.editmode}" />
 				
 				</p>
 				<p>
@@ -53,11 +54,11 @@
 				
 				<p>
 				<h:outputText value="#{AppBookBean.writer.address.street}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.address.street}" rendered="#{AppBookBean.editmode}" />
+				<h:inputText class="form-control" value="#{AppBookBean.writer.address.street}" rendered="#{AppBookBean.editmode}" />
 				<h:outputText value="#{AppBookBean.writer.address.city}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.address.city}" rendered="#{AppBookBean.editmode}" />
+				<h:inputText class="form-control" value="#{AppBookBean.writer.address.city}" rendered="#{AppBookBean.editmode}" />
 				<h:outputText value="#{AppBookBean.writer.address.postalCode}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.address.postalCode}" rendered="#{AppBookBean.editmode}" />
+				<h:inputText class="form-control" value="#{AppBookBean.writer.address.postalCode}" rendered="#{AppBookBean.editmode}" />
 				</p>
 				
 				<p>
@@ -68,7 +69,7 @@
 							
 						
 						<h:commandLink
-								class="form-control"
+								class="btn btn-outline-primary btn-sm"
 								type="submit" rendered="#{not AppBookBean.editmode}" action="#{AppBookBean.getBookFromDatabase(b.id)}">#{b.title}
 								 
 							</h:commandLink>
@@ -89,6 +90,7 @@
 				<h:form>
 					<h:commandButton class="btn btn-danger"  value="Cancel" action="#{AppBookBean.cancelEdit}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
 				</h:form>
+				</h:panelGroup>
 		</div>
 	</ui:define>
 </ui:composition>

@@ -24,7 +24,7 @@
 				</p>
 		</div>
 		<div class="col col-5 overflow">
-			<div rendered="#{AppBookBean.category}">
+			<h:panelGroup rendered="#{AppBookBean.category.nameCategory!=null}">
 			<h:form>
 				<h4 class="mt-2">
 				<h:outputText value="#{AppBookBean.category.nameCategory}" rendered="#{not AppBookBean.editmode}" />
@@ -61,7 +61,7 @@
 					<h:commandButton class="btn btn-danger"  value="Cancel" action="#{AppBookBean.cancelEdit}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
 				</h:form>
 
-			</div>
+			</h:panelGroup>
 		</div>
 	</ui:define>
 </ui:composition>

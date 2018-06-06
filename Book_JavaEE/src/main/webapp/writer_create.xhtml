@@ -9,8 +9,8 @@
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
-		<div class="col col-5">
-			<h:outputLabel value="Ajouter un auteur"></h:outputLabel>
+		<div class="col col-10 overflow">
+				<h3>Add a writer</h3>
 				<h:form>
 					<p>
 						<b class="mt-2 mb-2">First name</b>
@@ -44,7 +44,7 @@
 					<p>
 						<b class="mt-2 mb-2">Birthday</b>
 					</p>
-					<h:inputText value="#{WriterBean.writer.birthday}"  required="true" converter="dateConverter"
+					<h:inputText class="form-control" value="#{WriterBean.writer.birthday}"  required="true" converter="dateConverter"
 						size="20" maxlength="60" />
 		
 												
@@ -54,7 +54,7 @@
 					<p>
 						<b class="mt-2 mb-2">Genre</b>
 					</p>
-					<h:inputText value="#{WriterBean.writer.genre}" required="true"
+					<h:inputText class="form-control" value="#{WriterBean.writer.genre}" required="true"
 						size="20"
 						maxlength="60" />
 
@@ -64,7 +64,7 @@
 					<p>
 						<b class="mt-2 mb-2">City</b>
 					</p>
-					<h:inputText value="#{WriterBean.writer.address.city}"
+					<h:inputText class="form-control" value="#{WriterBean.writer.address.city}"
 						required="true"
 						 size="20"
 						maxlength="60" />
@@ -75,7 +75,9 @@
 							<b class="mt-2 mb-2">Postal code</b>
 						</p>
 
-						<h:inputText value="#{WriterBean.writer.address.postalCode}"
+						<h:inputText 
+						class="form-control"
+						value="#{WriterBean.writer.address.postalCode}"
 							required="true"
 							
 							size="20" maxlength="60" />
@@ -84,7 +86,7 @@
 							<b class="mt-2 mb-2">Street</b>
 						</p>
 
-						<h:inputText value="#{WriterBean.writer.address.street}"
+						<h:inputText class="form-control" value="#{WriterBean.writer.address.street}"
 							required="true"
 							
 							size="20" maxlength="60" />
