@@ -12,17 +12,16 @@
 		<managed-bean>
 		<managed-bean-name>CreateBookBean</managed-bean-name>
 		<managed-bean-class>ch.hevs.managedbeans.CreateBookBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
+		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>CategoryBean</managed-bean-name>
 		<managed-bean-class>ch.hevs.managedbeans.CategoryBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
+		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
 	<managed-bean>
 		<managed-bean-name>WriterBean</managed-bean-name>
 		<managed-bean-class>ch.hevs.managedbeans.WriterBean</managed-bean-class>
-		<managed-bean-scope>session</managed-bean-scope>
+		<managed-bean-scope>view</managed-bean-scope>
 	</managed-bean>
-
 </faces-config>

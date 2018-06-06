@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -151,9 +152,8 @@ public class AppBookBean {
 	}
 	
 	public void deleteBook(){
-		
-		System.out.println("ID BOOK " + this.book.getId());
 		bookShelf.deleteBook(this.book);
+		this.book = new Book(); 
 		
 	}
 	

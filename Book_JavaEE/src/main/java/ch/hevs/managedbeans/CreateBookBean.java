@@ -1,6 +1,5 @@
 package ch.hevs.managedbeans;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -8,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
@@ -17,7 +17,7 @@ import ch.hevs.businessobject.Category;
 import ch.hevs.businessobject.Writer;
 
 @ManagedBean(name = "createbookbean")
-
+@ViewScoped
 public class CreateBookBean {
 
 	@EJB
@@ -60,7 +60,7 @@ public class CreateBookBean {
 		this.categorySelectedId = categorySelectedId;
 	}
 
-	public void insertBook(Book book) {
+	public String insertBook(Book book) {
 		for (String writerId : writerSelectedId)
 			book.addWriter(bookShelf.getWriter(Long.valueOf(writerId)));
 		
@@ -68,6 +68,7 @@ public class CreateBookBean {
 			book.addCategory(bookShelf.getCategory(Long.valueOf(categoryId)));
 
 		bookShelf.insertBook(book);
+		return "book_index.xhtml";
 	}
 
 	public Set<Writer> getWriters() {

@@ -1,12 +1,16 @@
 package ch.hevs.managedbeans;
 
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import ch.hevs.bookshelf.BookShelf;
 import ch.hevs.businessobject.Address;
 import ch.hevs.businessobject.Writer;
 
+@ManagedBean
+@ViewScoped
 public class WriterBean {
 	
 	@EJB
@@ -23,9 +27,9 @@ public class WriterBean {
 		this.writer = writer;
 	}
 	
-	public void insertWriter(Writer writer) {
-//		writer.setBirthday(birthdayS);
+	public String insertWriter(Writer writer) {
 		bookshelf.insertWriter(writer);
+		return "writer_index.xthml"; 
 	}
 	
 	public void createWriter() {
