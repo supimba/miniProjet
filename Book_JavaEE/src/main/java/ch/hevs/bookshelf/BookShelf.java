@@ -26,5 +26,6 @@ public interface BookShelf {
 	public Category getCategory(long id);
 	public void insertCategory(Category category);
 	public void updateCategory(Category category);
+	public void deleteCategory(Category category); 
 
 }

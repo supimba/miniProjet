@@ -25,7 +25,15 @@
 		</div>
 		<div class="col col-5 overflow">
 			<div rendered="#{AppBookBean.category}">
-				<h4 class="mt-2">#{AppBookBean.category.nameCategory}</h4>
+			<h:form>
+				<h4 class="mt-2">
+				<h:outputText value="#{AppBookBean.category.nameCategory}" rendered="#{not AppBookBean.editmode}" />
+					<h:inputText class="form-control" value="#{AppBookBean.category.nameCategory}" rendered="#{AppBookBean.editmode}" />
+				
+				</h4>
+				
+				<h:commandButton class="btn btn-success" value="Save" action="#{AppBookBean.updateCategory(AppBookBean.category)}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
+				</h:form>
 				<p>
 					<b class="mt-2 mb-2">Books</b>
 				</p>
@@ -43,7 +51,15 @@
 							</h:form>
 					</ui:repeat>
 				</p>
-				
+				<h:form>
+					<h:commandButton class="btn btn-success"  value="Edit" action="#{AppBookBean.edit}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
+				</h:form>
+								<h:form>
+					<h:commandButton class="btn btn-danger"  value="Delete" action="#{AppBookBean.deleteCategory()}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
+				</h:form>
+				<h:form>
+					<h:commandButton class="btn btn-danger"  value="Cancel" action="#{AppBookBean.cancelEdit}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
+				</h:form>
 
 			</div>
 		</div>

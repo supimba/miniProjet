@@ -104,7 +104,12 @@ public class BookShelfBean implements BookShelf {
 
 	@Override
 	public void updateCategory(Category category) {
-		// TODO Auto-generated method stub
+		em.persist(category);
+		
+	}
+	@Override
+	public void deleteCategory(Category category) {
+		em.remove(em.contains(category) ? category : em.merge(category));
 		
 	}
 
@@ -237,6 +242,8 @@ public class BookShelfBean implements BookShelf {
 			em.persist(b3);
 		}
 	}
+
+
 
 
 

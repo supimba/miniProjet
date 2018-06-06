@@ -122,6 +122,15 @@ public class AppBookBean {
 		return this.category;
 	}
 	
+	public void updateCategory(Category category) {
+		bookShelf.updateCategory(category);
+		this.editmode = false;		
+	}
+	public void deleteCategory() {
+		bookShelf.deleteCategory(category);
+		this.category = new Category(); 
+	}
+	
 	public void getCategoryFromDatabase(long i) {
 		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_index.xhtml");
 		this.category = bookShelf.getCategory(i);
