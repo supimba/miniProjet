@@ -18,7 +18,7 @@
 					<h4 class="mt-2">
 						<h:outputLabel for="title">Title<label>*</label>
 						</h:outputLabel>
-						<h:inputText id="title" value="#{CreateBookBean.book.title}"
+						<h:inputText id="title" value="#{BookBean.book.title}"
 							required="true" size="20" maxlength="60" />
 					</h4>
 
@@ -27,7 +27,7 @@
 					</p>
 					<p>
 						<h:inputText class="form-control"
-							value="#{CreateBookBean.book.isbn}" required="true"
+							value="#{BookBean.book.isbn}" required="true"
 							size="20"
 							maxlength="60" />
 
@@ -38,14 +38,14 @@
 					</p>
 					<p>
 						<h:inputTextarea class="form-control"
-							value="#{CreateBookBean.book.summary}" required="false" cols="10"
+							value="#{BookBean.book.summary}" required="false" cols="10"
 							rows="10"></h:inputTextarea>
 					</p>
 					<p>
 						<b class="mt-2 mb-2"> Language </b>
 					</p>
 					<h:inputText class="form-control"
-						value="#{CreateBookBean.book.language}" required="true" size="20"
+						value="#{BookBean.book.language}" required="true" size="20"
 						maxlength="60" />
 
 					<p>
@@ -53,7 +53,7 @@
 					</p>
 					<p>
 						<h:inputText class="form-control"
-							value="#{CreateBookBean.book.year}" required="false" size="20"
+							value="#{BookBean.book.year}" required="false" size="20"
 							maxlength="60" />
 					</p>
 					<p>
@@ -61,8 +61,8 @@
 					</p>
 					<p>
 						<h:selectManyListbox class="form-control"
-							value="#{CreateBookBean.writerSelectedId}">
-							<f:selectItems value="#{CreateBookBean.writers}" var="writer"
+							value="#{WriterBean.writerSelectedId}">
+							<f:selectItems value="#{WriterBean.writers}" var="writer"
 								itemValue="#{writer.id}" itemLabel="#{writer.name}"></f:selectItems>
 						</h:selectManyListbox>
 					</p>
@@ -71,8 +71,8 @@
 					</p>
 					<p>
 						<h:selectManyListbox class="form-control"
-							value="#{CreateBookBean.categorySelectedId}">
-							<f:selectItems value="#{CreateBookBean.categories}"
+							value="#{CategoryBean.categorySelectedId}">
+							<f:selectItems value="#{CategoryBean.categories}"
 								var="category" itemValue="#{category.id}"
 								itemLabel="#{category.nameCategory}"></f:selectItems>
 						</h:selectManyListbox>
@@ -80,7 +80,7 @@
 					<!-- 						https://stackoverflow.com/questions/19139211/attribute-cannot-be-resolved-as-a-member-of-bean -->
 					<p>
 						<h:commandButton class="btn btn-success" value="Send" 
-							action="#{CreateBookBean.insertBook(CreateBookBean.book)}"
+							action="#{BookBean.insertBook(BookBean.book)}"
 							
 							></h:commandButton>
 					</p>

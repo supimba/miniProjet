@@ -8,11 +8,11 @@
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
 		<div class="col col-5 overflow">
-			<ui:repeat var="w" value="#{AppBookBean.writers.toArray()}">
+			<ui:repeat var="w" value="#{WriterBean.writers.toArray()}">
 					<h:form>
 							<h:commandLink
 								class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
-								type="submit" action="#{AppBookBean.getWriterFromDatabase(w.id)}">
+								type="submit" action="#{WriterBean.getWriterFromDatabase(w.id)}">
 									#{w.firstname} #{w.lastname}
 							</h:commandLink>
 						</h:form>
@@ -23,35 +23,35 @@
 			</h:form>
 		</div>
 		<div class="col col-5 overflow">
-				<h4 class="mt-2">#{AppBookBean.writer.firstname} #{AppBookBean.writer.lastname}</h4>
+				<h4 class="mt-2">#{WriterBean.writer.firstname} #{WriterBean.writer.lastname}</h4>
 				<p>
 					<b class="mt-2 mb-2">Biography</b>
 				</p>
-				<p>#{AppBookBean.writer.biography}</p>
+				<p>#{WriterBean.writer.biography}</p>
 				<p>
 					<b class="mt-2 mb-2">Date of Birth</b>
 				</p>
-				<p>#{AppBookBean.writer.birthday}</p>
+				<p>#{WriterBean.writer.birthday}</p>
 				<p>
 					<b class="mt-2 mb-2">Address</b>
 				</p>
 				
 				<p>
-					#{AppBookBean.writer.address.street}<br/>
-					#{AppBookBean.writer.address.city}
-					#{AppBookBean.writer.address.postalCode}
+					#{WriterBean.writer.address.street}<br/>
+					#{WriterBean.writer.address.city}
+					#{WriterBean.writer.address.postalCode}
 				</p>
 				
 				<p>
 					<ui:repeat var="b"
-						value="#{AppBookBean.writer.books.toArray()}" varStatus="status">
+						value="#{WriterBean.writer.books.toArray()}" varStatus="status">
 				
 			
 							<h:form >
 						
 						<h:commandButton 
 								class="form-control"
-								type="submit" action="#{AppBookBean.getBookFromDatabase(b.id)}">#{b.title}
+								type="submit" action="#{BookBean.getBookFromDatabase(b.id)}">#{b.title}
 								 
 							</h:commandButton>
 							

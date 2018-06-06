@@ -8,43 +8,39 @@
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
 		<div class="col col-5 overflow">
-			<ui:repeat var="c" value="#{AppBookBean.categories.toArray()}">
-					<h:form>
-							<h:commandLink
-								class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
-								type="submit" action="#{AppBookBean.getCategoryFromDatabase(c.id)}">
+			<ui:repeat var="c" value="#{CategoryBean.categories.toArray()}">
+				<h:form>
+					<h:commandLink
+						class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
+						type="submit" action="#{CategoryBean.getCategoryFromDatabase(c.id)}">
 									#{c.nameCategory}
 							</h:commandLink>
-						</h:form>
+				</h:form>
 			</ui:repeat>
-							<p>
-								<h:form>
-				<h:commandButton value="Create category" class="btn btn-warning" type="submit" action="#{AppBookBean.createCategory}"> </h:commandButton>
-			</h:form>
-				</p>
+			<p>
+				<h:form>
+					<h:commandButton value="Create category" class="btn btn-warning"
+						type="submit" action="#{CategoryBean.createCategory}">
+					</h:commandButton>
+				</h:form>
+			</p>
 		</div>
 		<div class="col col-5 overflow">
-			<div rendered="#{AppBookBean.category}">
-				<h4 class="mt-2">#{AppBookBean.category.nameCategory}</h4>
+			<div rendered="#{CategoryBean.category}">
+				<h4 class="mt-2">#{CategoryBean.category.nameCategory}</h4>
 				<p>
 					<b class="mt-2 mb-2">Books</b>
 				</p>
 				<p>
-					<ui:repeat var="b"
-						value="#{AppBookBean.category.books.toArray()}" varStatus="status">
-						<h:form >
-						
-						<h:commandLink
-								class="mt-1 mb-1 btn btn-outline-primary btn-sm"
-								type="submit" action="#{AppBookBean.getBookFromDatabase(b.id)}">#{b.title}
-								 
+					<ui:repeat var="b" value="#{CategoryBean.category.books.toArray()}"
+						varStatus="status">
+						<h:form>
+							<h:commandLink class="mt-1 mb-1 btn btn-outline-primary btn-sm"
+								type="submit" action="#{BookBean.getBookFromDatabase(b.id)}">#{b.title}
 							</h:commandLink>
-							
-							</h:form>
+						</h:form>
 					</ui:repeat>
 				</p>
-				
-
 			</div>
 		</div>
 	</ui:define>

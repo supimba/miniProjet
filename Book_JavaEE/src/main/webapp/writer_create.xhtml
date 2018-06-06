@@ -11,88 +11,66 @@
 	<ui:define name="content">
 		<div class="col col-5">
 			<h:outputLabel value="Ajouter un auteur"></h:outputLabel>
-				<h:form>
-					<p>
-						<b class="mt-2 mb-2">First name</b>
-					</p>
-					<h:inputText class="form-control" value="#{WriterBean.writer.firstname}" required="true"
-						size="20"
-						maxlength="60" />
+			<h:form>
+				<p>
+					<b class="mt-2 mb-2">First name</b>
+				</p>
+				<h:inputText class="form-control"
+					value="#{WriterBean.writer.firstname}" required="true" size="20"
+					maxlength="60" />
+				<p>
+					<b class="mt-2 mb-2">Last name</b>
+				</p>
 
+				<h:inputText class="form-control"
+					value="#{WriterBean.writer.lastname}" required="true" size="20"
+					maxlength="60" />
+				<p>
+					<b class="mt-2 mb-2">Biography</b>
+				</p>
 
-
-					<p>
-						<b class="mt-2 mb-2">Last name</b>
-					</p>
-
-					<h:inputText class="form-control" value="#{WriterBean.writer.lastname}" required="true"
-						size="20" maxlength="60" />
-
-
-					<p>
-						<b class="mt-2 mb-2">Biography</b>
-					</p>
-
-					<h:inputTextarea class="form-control" value="#{WriterBean.writer.biography}"
-						required="true">
-					</h:inputTextarea>
-
-
-
-
-
-					<p>
-						<b class="mt-2 mb-2">Birthday</b>
-					</p>
-					<h:inputText value="#{WriterBean.writer.birthday}"  required="true" converter="dateConverter"
-						size="20" maxlength="60" />
-		
-												
-
-
-
-					<p>
-						<b class="mt-2 mb-2">Genre</b>
-					</p>
-					<h:inputText value="#{WriterBean.writer.genre}" required="true"
-						size="20"
-						maxlength="60" />
+				<h:inputTextarea class="form-control"
+					value="#{WriterBean.writer.biography}" required="true">
+				</h:inputTextarea>
+				<p>
+					<b class="mt-2 mb-2">Birthday</b>
+				</p>
+				<h:inputText value="#{WriterBean.writer.birthday}" required="true"
+					converter="dateConverter" size="20" maxlength="60" />
+				<p>
+					<b class="mt-2 mb-2">Genre</b>
+				</p>
+				<h:inputText value="#{WriterBean.writer.genre}" required="true"
+					size="20" maxlength="60" />
 
 
 
 
-					<p>
-						<b class="mt-2 mb-2">City</b>
-					</p>
-					<h:inputText value="#{WriterBean.writer.address.city}"
-						required="true"
-						 size="20"
-						maxlength="60" />
+				<p>
+					<b class="mt-2 mb-2">City</b>
+				</p>
+				<h:inputText value="#{WriterBean.writer.address.city}"
+					required="true" size="20" maxlength="60" />
 
 
-		
-						<p>
-							<b class="mt-2 mb-2">Postal code</b>
-						</p>
 
-						<h:inputText value="#{WriterBean.writer.address.postalCode}"
-							required="true"
-							
-							size="20" maxlength="60" />
+				<p>
+					<b class="mt-2 mb-2">Postal code</b>
+				</p>
 
-						<p>
-							<b class="mt-2 mb-2">Street</b>
-						</p>
+				<h:inputText value="#{WriterBean.writer.address.postalCode}"
+					required="true" size="20" maxlength="60" />
 
-						<h:inputText value="#{WriterBean.writer.address.street}"
-							required="true"
-							
-							size="20" maxlength="60" />
+				<p>
+					<b class="mt-2 mb-2">Street</b>
+				</p>
 
-						<h:commandButton class="btn btn-success" value="Create"
-							action="#{WriterBean.insertWriter(WriterBean.writer)}"></h:commandButton>
-				</h:form>
-			</div>
+				<h:inputText value="#{WriterBean.writer.address.street}"
+					required="true" size="20" maxlength="60" />
+				<h:commandButton class="btn btn-success" value="Create"
+					action="#{WriterBean.insertWriter(WriterBean.writer)}"></h:commandButton>
+			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
