@@ -10,85 +10,97 @@
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
 
-<div class="col col-10 overflow">
-				<h:form id="insertBookForm">
-						
-					<h3> Create a new book </h3>
-			<p></p>
-					<h4 class="mt-2">
-						<h:outputLabel for="title">Title<label>*</label>
-						</h:outputLabel>
-						<h:inputText class="form-control" id="title" value="#{CreateBookBean.book.title}"
-							required="true" size="20" maxlength="60" />
-					</h4>
+		<div class="col col-10 overflow">
+			<h:form id="insertBookForm">
 
-										<p>
-						<b class="mt-2 mb-2"> ISBN </b>
-					</p>
-					<p>
-						<h:inputText class="form-control"
-							value="#{CreateBookBean.book.isbn}" required="true"
-							size="20"
-							maxlength="60" />
+				<h3>Create a new book</h3>
+				<p></p>
+				<h4 class="mt-2">
+					<h:outputLabel for="title">Title<label>*</label>
+					</h:outputLabel>
+					
+				</h4>
+				<h:message style="color:red;" for="title" ></h:message>
+					<h:inputText class="form-control" id="title"
+						value="#{CreateBookBean.book.title}" required="true" size="20"
+						maxlength="60"
+						requiredMessage="Required" />
 
-					</p>
+				<p>
+					<b class="mt-2 mb-2"> ISBN </b>
+					
+				</p>
+				<p>
+									<h:message style="color:red;"  for="isbn"></h:message>
+				
+					<h:inputText id="isbn" class="form-control"
+						value="#{CreateBookBean.book.isbn}" required="true" size="20"
+						maxlength="60" requiredMessage="Required"/>
 
-					<p>
-						<b class="mt-2 mb-2"> Summary </b>
-					</p>
-					<p>
-						<h:inputTextarea class="form-control"
-							value="#{CreateBookBean.book.summary}" required="false" cols="10"
-							rows="10"></h:inputTextarea>
-					</p>
-					<p>
-						<b class="mt-2 mb-2"> Language </b>
-					</p>
-					<h:inputText class="form-control"
-						value="#{CreateBookBean.book.language}" required="true" size="20"
-						maxlength="60" />
+				</p>
 
-					<p>
-						<b class="mt-2 mb-2"> Year </b>
-					</p>
-					<p>
-						<h:inputText class="form-control"
-							value="#{CreateBookBean.book.year}" required="false" size="20"
-							maxlength="60" />
-					</p>
-					<p>
-						<b class="mt-2 mb-2">Author(s)</b>
-					</p>
-					<p>
-						<h:selectManyListbox class="form-control"
-							value="#{CreateBookBean.writerSelectedId}">
-							<f:selectItems value="#{CreateBookBean.writers}" var="writer"
-								itemValue="#{writer.id}" itemLabel="#{writer.name}"></f:selectItems>
-						</h:selectManyListbox>
-					</p>
-					<p>
-						<b class="mt-2 mb-2">Category</b>
-					</p>
-					<p>
-						<h:selectManyListbox class="form-control"
-							value="#{CreateBookBean.categorySelectedId}">
-							<f:selectItems value="#{CreateBookBean.categories}"
-								var="category" itemValue="#{category.id}"
-								itemLabel="#{category.nameCategory}"></f:selectItems>
-						</h:selectManyListbox>
-					</p>
-					<!-- 						https://stackoverflow.com/questions/19139211/attribute-cannot-be-resolved-as-a-member-of-bean -->
-					<p>
-						<h:commandButton class="btn btn-success" value="Send" 
-							action="#{CreateBookBean.insertBook(CreateBookBean.book)}"
-							
-							></h:commandButton>
-					</p>
+				<p>
+					<b class="mt-2 mb-2"> Summary </b>
+				</p>
+				<p>
+													<h:message style="color:red;"  for="summary"></h:message>
+				
+					<h:inputTextarea id="summary" class="form-control"
+						value="#{CreateBookBean.book.summary}" required="true" cols="10"
+						rows="10" requiredMessage="Required"></h:inputTextarea>
+				</p>
+				<p>
+					<b class="mt-2 mb-2"> Language </b>
+				</p>
+																	<h:message style="color:red;"  for="lang"></h:message>
+				
+				<h:inputText id="lang" class="form-control"
+					value="#{CreateBookBean.book.language}" required="true" size="20"
+					maxlength="60"
+					requiredMessage="Required"/>
 
-				</h:form>
-			</div>
+				<p>
+					<b class="mt-2 mb-2"> Year </b>
+				</p>
+				<p>
+																					<h:message style="color:red;"  for="year"></h:message>
+				
+					<h:inputText id="year" class="form-control"
+						value="#{CreateBookBean.book.year}" required="true" size="20"
+						maxlength="60" 
+						requiredMessage="Required"
+					/>
+				</p>
+				<p>
+					<b class="mt-2 mb-2">Author(s)</b>
+				</p>
+				<p>
+					<h:selectManyListbox class="form-control"
+						value="#{CreateBookBean.writerSelectedId}">
+						<f:selectItems value="#{CreateBookBean.writers}" var="writer"
+							itemValue="#{writer.id}" itemLabel="#{writer.name}"></f:selectItems>
+					</h:selectManyListbox>
+				</p>
+				<p>
+					<b class="mt-2 mb-2">Category</b>
+				</p>
+				<p>
+					<h:selectManyListbox class="form-control"
+						value="#{CreateBookBean.categorySelectedId}">
+						<f:selectItems value="#{CreateBookBean.categories}" var="category"
+							itemValue="#{category.id}" itemLabel="#{category.nameCategory}"></f:selectItems>
+					</h:selectManyListbox>
+				</p>
+				<!-- 						https://stackoverflow.com/questions/19139211/attribute-cannot-be-resolved-as-a-member-of-bean -->
+				<p>
+					<h:commandButton class="btn btn-success" value="Send"
+						action="#{CreateBookBean.insertBook(CreateBookBean.book)}"></h:commandButton>
+				</p>
 
-		
+			</h:form>
+		</div>
+
+
 	</ui:define>
 </ui:composition>
 </html>

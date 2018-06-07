@@ -20,9 +20,10 @@
 				<b class="mt-2 mb-2"> Category name</b>
 			</p>
 			<p>
-				<h:inputText class="form-control"
+		<h:message style="color:red;"  for="name"></h:message>
+				<h:inputText id="name" class="form-control"
 					value="#{CategoryBean.category.nameCategory}" required="true"
-					requiredMessage="Please enter a category name" size="20"
+					requiredMessage="Required" size="20"
 					maxlength="60" />
 			</p>
 			<p>

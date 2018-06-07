@@ -9,56 +9,71 @@
 	<ui:define name="content">
 		<div class="col col-5 overflow">
 			<ui:repeat var="c" value="#{AppBookBean.categories.toArray()}">
-					<h:form>
-							<h:commandLink
-								class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
-								type="submit" action="#{AppBookBean.getCategoryFromDatabase(c.id)}">
+				<h:form>
+					<h:commandLink
+						class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
+						type="submit"
+						action="#{AppBookBean.getCategoryFromDatabase(c.id)}">
 									#{c.nameCategory}
-							</h:commandLink>
-						</h:form>
+					</h:commandLink>
+				</h:form>
 			</ui:repeat>
-							<p>
-								<h:form>
-				<h:commandButton value="Create category" class="btn btn-warning" type="submit" action="#{AppBookBean.createCategory}"> </h:commandButton>
-			</h:form>
-				</p>
+			<p>
+				<h:form>
+					<h:commandButton value="Create category" class="btn btn-warning"
+						type="submit" action="#{AppBookBean.createCategory}">
+					</h:commandButton>
+				</h:form>
+			</p>
 		</div>
 		<div class="col col-5 overflow">
 			<h:panelGroup rendered="#{AppBookBean.category.nameCategory!=null}">
-			<h:form>
-				<h4 class="mt-2">
-				<h:outputText value="#{AppBookBean.category.nameCategory}" rendered="#{not AppBookBean.editmode}" />
-					<h:inputText class="form-control" value="#{AppBookBean.category.nameCategory}" rendered="#{AppBookBean.editmode}" />
-				
-				</h4>
-				
-				<h:commandButton class="btn btn-success" value="Save" action="#{AppBookBean.updateCategory(AppBookBean.category)}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
+				<h:form>
+					<h4 class="mt-2">
+						<h:outputText value="#{AppBookBean.category.nameCategory}"
+							rendered="#{not AppBookBean.editmode}" />
+						<h:message style="color:red;"  for="name"></h:message>
+						<h:inputText id="name" class="form-control"
+							value="#{AppBookBean.category.nameCategory}"
+							rendered="#{AppBookBean.editmode}" 
+							required="true" requiredMessage="Required"/>
+
+					</h4>
+
+					<h:commandButton class="btn btn-success" value="Save"
+						action="#{AppBookBean.updateCategory(AppBookBean.category)}"
+						rendered="#{AppBookBean.editmode}"></h:commandButton>
 				</h:form>
 				<p>
 					<b class="mt-2 mb-2">Books</b>
 				</p>
 				<p>
-					<ui:repeat var="b"
-						value="#{AppBookBean.category.books.toArray()}" varStatus="status">
-						<h:form >
-						
-						<h:commandLink
-								class="mt-1 mb-1 btn btn-outline-primary btn-sm"
+					<ui:repeat var="b" value="#{AppBookBean.category.books.toArray()}"
+						varStatus="status">
+						<h:form>
+
+							<h:commandLink class="mt-1 mb-1 btn btn-outline-primary btn-sm"
 								type="submit" action="#{AppBookBean.getBookFromDatabase(b.id)}">#{b.title}
 								 
 							</h:commandLink>
-							
-							</h:form>
+
+						</h:form>
 					</ui:repeat>
 				</p>
 				<h:form>
-					<h:commandButton class="btn btn-success"  value="Edit" action="#{AppBookBean.edit}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
-				</h:form>
-								<h:form>
-					<h:commandButton class="btn btn-danger"  value="Delete" action="#{AppBookBean.deleteCategory()}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
+					<h:commandButton class="btn btn-success" value="Edit"
+						action="#{AppBookBean.edit}"
+						rendered="#{not AppBookBean.editmode}"></h:commandButton>
 				</h:form>
 				<h:form>
-					<h:commandButton class="btn btn-danger"  value="Cancel" action="#{AppBookBean.cancelEdit}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
+					<h:commandButton class="btn btn-danger" value="Delete"
+						action="#{AppBookBean.deleteCategory()}"
+						rendered="#{not AppBookBean.editmode}"></h:commandButton>
+				</h:form>
+				<h:form>
+					<h:commandButton class="btn btn-danger" value="Cancel"
+						action="#{AppBookBean.cancelEdit}"
+						rendered="#{AppBookBean.editmode}"></h:commandButton>
 				</h:form>
 
 			</h:panelGroup>
