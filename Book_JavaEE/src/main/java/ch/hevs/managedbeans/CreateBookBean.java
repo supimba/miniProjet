@@ -28,11 +28,9 @@ public class CreateBookBean {
 	private Set<Writer> writers;
 	private List<String> writerSelectedId;
 
-
 	private List<String> categorySelectedId; 
-
 	private Book book = new Book();
-	private String toDelete; 
+	
 	@PostConstruct
 	public void initialize() throws NamingException {
 		// use JNDI to inject reference to bank EJB
@@ -44,26 +42,16 @@ public class CreateBookBean {
 		this.categories = bookShelf.getCategories();
 	}
 
-	public List<String> getWriterSelectedId() {
-		return writerSelectedId;
-	}
-
-	public void setWriterSelectedId(List<String> writerSelectedId) {
-		this.writerSelectedId = writerSelectedId;
-	}
-	
-	public List<String> getCategorySelectedId() {
-		return categorySelectedId;
-	}
-
-	public void setCategorySelectedId(List<String> categorySelectedId) {
-		this.categorySelectedId = categorySelectedId;
-	}
-
+	/**
+	 * Create a new book and insert in the database
+	 * @param book
+	 * @return
+	 */
 	public String insertBook(Book book) {
+		// get the selected writers
 		for (String writerId : writerSelectedId)
 			book.addWriter(bookShelf.getWriter(Long.valueOf(writerId)));
-		
+		// get the selected categories
 		for(String categoryId : categorySelectedId)
 			book.addCategory(bookShelf.getCategory(Long.valueOf(categoryId)));
 
@@ -71,6 +59,7 @@ public class CreateBookBean {
 		return "book_index.xhtml";
 	}
 
+	// getters and setters
 	public Set<Writer> getWriters() {
 		return bookShelf.getWriters();
 	}
@@ -97,6 +86,22 @@ public class CreateBookBean {
 
 	public void setBook(Book book) {
 		this.book = book;
+	}
+	
+	public List<String> getWriterSelectedId() {
+		return writerSelectedId;
+	}
+
+	public void setWriterSelectedId(List<String> writerSelectedId) {
+		this.writerSelectedId = writerSelectedId;
+	}
+	
+	public List<String> getCategorySelectedId() {
+		return categorySelectedId;
+	}
+
+	public void setCategorySelectedId(List<String> categorySelectedId) {
+		this.categorySelectedId = categorySelectedId;
 	}
 
 }

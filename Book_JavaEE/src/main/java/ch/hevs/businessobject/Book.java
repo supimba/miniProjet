@@ -35,7 +35,6 @@ public class Book {
 	private String language;
 	
 	// relations
-	
 	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinTable(name = "book_writers",
 		joinColumns = { @JoinColumn(name = "book_id") },
@@ -66,7 +65,7 @@ public class Book {
 	/**
 	 * Gets the book id.
 	 *  
-	 * @return long  the id value of the book
+	 * @return long the id value of the book
 	 */
 	public Long getId() {
 		return id;
@@ -75,7 +74,7 @@ public class Book {
 	/**
 	 * Sets the book id.
 	 *  
-	 * @param long  the id value of the book
+	 * @param id the id value of the book
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -84,7 +83,7 @@ public class Book {
 	/**
 	 * Gets the book isbn code.
 	 *  
-	 * @return String  the isbn code value of the book
+	 * @return String the isbn code value of the book
 	 */
 	public String getIsbn() {
 		return isbn;
@@ -93,7 +92,7 @@ public class Book {
 	/**
 	 * Sets the book isbn code.
 	 *  
-	 * @param String  the isbn code value of the book
+	 * @param isbn the isbn code value of the book
 	 */
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
@@ -102,7 +101,7 @@ public class Book {
 	/**
 	 * Gets the book title.
 	 *  
-	 * @return String  the title of the book
+	 * @return String the title of the book
 	 */
 	public String getTitle() {
 		return title;
@@ -111,7 +110,7 @@ public class Book {
 	/**
 	 * Sets the book title.
 	 *  
-	 * @param String  the title of the book
+	 * @param title the title of the book
 	 */
 	public void setTitle(String title) {
 		this.title = title;
@@ -120,7 +119,7 @@ public class Book {
 	/**
 	 * Gets the book summary.
 	 *  
-	 * @return String  the summary of the book
+	 * @return String the summary of the book
 	 */
 	public String getSummary() {
 		return summary;
@@ -129,7 +128,7 @@ public class Book {
 	/**
 	 * Sets the book summary.
 	 *  
-	 * @param String  the summary of the book
+	 * @param summary the summary of the book
 	 */
 	public void setSummary(String summary) {
 		this.summary = summary;
@@ -138,7 +137,7 @@ public class Book {
 	/**
 	 * Gets the publication year of the book.
 	 *  
-	 * @return String  the publication year of the book
+	 * @return String the publication year of the book
 	 */
 	public String getYear() {
 		return year;
@@ -147,7 +146,7 @@ public class Book {
 	/**
 	 * Sets the publication year of the book.
 	 *  
-	 * @param String  the publication year of the book
+	 * @param year the publication year of the book
 	 */
 	public void setYear(String year) {
 		this.year = year;
@@ -156,7 +155,7 @@ public class Book {
 	/**
 	 * Gets the language of the book.
 	 *  
-	 * @return String  the language of the book
+	 * @return String the language of the book
 	 */
 	public String getLanguage() {
 		return language;
@@ -165,7 +164,7 @@ public class Book {
 	/**
 	 * Sets the language of the book.
 	 *  
-	 * @param String  the language of the book
+	 * @param language the language of the book
 	 */
 	public void setLanguage(String language) {
 		this.language = language;
@@ -174,7 +173,7 @@ public class Book {
 	/**
 	 * Gets all the writers of the book.
 	 * 
-	 * @return List<Writter>  all writers of the book
+	 * @return Set<Writer> all writers of the book
 	 */
 	public Set<Writer> getWriters(){
 		return writers; 
@@ -183,7 +182,7 @@ public class Book {
 	/**
 	 * Add a writer to a book.
 	 * 
-	 * @param writer  the writer to add
+	 * @param writer the writer to add
 	 */
 	public void addWriter(Writer writer){
 		this.writers.add(writer);
@@ -193,7 +192,7 @@ public class Book {
 	/**
 	 * Remove a writer of a book.
 	 * 
-	 * @param writer  the writer to remove
+	 * @param writer the writer to remove
 	 */
 	public void removeWriter(Writer writer){
 		this.writers.remove(writer); 		
@@ -227,9 +226,17 @@ public class Book {
 
 	}
 	
+	/**
+	 * Remove all categories from the book
+	 */
 	public void clearCategories(){
 		categories.clear();
 	}
+	
+	/**
+	 * Remove all writers from the book
+	 * 
+	 */
 	public void clearWriters(){
 		writers.clear();
 	}

@@ -6,10 +6,18 @@ import ch.hevs.businessobject.Book;
 import ch.hevs.businessobject.Category;
 import ch.hevs.businessobject.Writer;
 
+/**
+ * BookShelf.java
+ * Interface class that has the following methods.
+ *
+ */
 
+@Local
 public interface BookShelf {
 	
+	// populate the database
 	public void populate();
+	
 	public Set<Book> getBooks();
 	public Book getBook(long id);
 	public void insertBook(Book book);

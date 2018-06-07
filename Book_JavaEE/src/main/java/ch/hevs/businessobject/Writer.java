@@ -155,16 +155,6 @@ public class Writer {
 	 * @param String  the birthday of the writer
 	 */
 	public void setBirthday(Date birthday) {
-//		System.out.println("SET BIRTH");
-//		String someDate = birthday;
-//		SimpleDateFormat sdf = new SimpleDateFormat("MM.dd.yyyy");
-//		Date date = new Date();
-//		try {
-//			date = sdf.parse(someDate);
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		this.birthday = birthday;
 	}
 
@@ -193,29 +183,52 @@ public class Writer {
 	 */
 	public void removeBook(Book book){
 		this.books.remove(book); 
-		//book.removeWriter(this);
-
 	}
 	
+	/**
+	 * Add a book to the writer
+	 *
+	 * @param book
+	 */
 	public void addBook(Book book){
 		this.books.add(book);
 		//book.addWriter(this);
 
 	}
 	
+	/**
+	 * Get all books from the writer
+	 * 
+	 * @return all books from the writer
+	 */
 	public Set<Book> getBooks() {
 		return books;
 	}
 	
+	/**
+	 * Set the address from the writer
+	 *
+	 * @param address
+	 */
 	public void setAddress(Address address)
 	{
 		this.address = address;
 	}
 	
+	/**
+	 * Get the address from the writer
+	 * 
+	 * @return
+	 */
 	public Address getAddress()
 	{
 		return this.address;
 	}
+	
+	/**
+	 * Delete all books from the writer
+	 * 
+	 */
 	public void clearBooks(){
 		books.clear();
 	}

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Set;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.naming.InitialContext;
@@ -18,17 +20,18 @@ import ch.hevs.businessobject.Writer;
  * BookShelfBean.java
  * 
  */
-
 @ManagedBean
 public class AppBookBean {
+	
+	@EJB
+	private BookShelf bookShelf;
+	
 	private Set<Book> books;
 	private Book book = new Book();
 	private Set<Writer> writers;
 	private Writer writer = new Writer();
 	private Set<Category> categories;
 	private Category category = new Category();
-	private BookShelf bookShelf;
-	private Book bookEdit; 
 	private List<String> writersSelectedId; 
 	private List<String> categoriesSelectedId;
 	private List<String> booksSelectedId; 
@@ -47,62 +50,29 @@ public class AppBookBean {
 		this.populate();
 	}
 	
-	public void cancelEdit(){
-		 editmode = false;
+	// CRUD for books
+	public void createNewBook(){
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "book_create.xhtml");
 	}
-	public void edit() {
-	    editmode = true;
-	}
-
-	public void updateBook(Book book){
 	
+	public void updateBook(Book book){
 		book.clearCategories();
 		book.clearWriters();
-		
 		for (String writerId : writersSelectedId)
 			book.addWriter(bookShelf.getWriter(Long.valueOf(writerId)));
-		
 		for (String categoryId : categoriesSelectedId)
 			book.addCategory(bookShelf.getCategory(Long.valueOf(categoryId)));
 		
 		bookShelf.updateBook(book);
 		this.editmode = false;
-
 	}
-
-	public boolean isEditmode() {
-	    return editmode;
+	
+	public void deleteBook(){
+		bookShelf.deleteBook(this.book);
+		this.book = new Book(); 
 	}
-
-	public Book getBookEdit() {
-		return bookEdit;
-	}
-
-	public void setBookEdit(Book bookEdit) {
-		this.bookEdit = book;
-	}
-
-	public Set<Book> getBooks() {
-		return bookShelf.getBooks();
-	}
-
-	public Book getBook() {
-		return this.book;
-	}
-
-	public void getBookFromDatabase(long i) {
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "book_index.xhtml");
-
-		this.book = bookShelf.getBook(i);
-	}
-	public void createNewBook(){
-		
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "book_create.xhtml");
-	}
-	public Set<Writer> getWriters() {
-		return bookShelf.getWriters();
-	}
-
+	
+	// udpate and delete writer
 	public void updateWriter(Writer writer){
 		writer.clearBooks();
 		
@@ -112,6 +82,80 @@ public class AppBookBean {
 		bookShelf.updateWriter(writer);
 		this.editmode = false;
 	}
+
+	public void deleteWriter(){
+		bookShelf.deleteWriter(this.writer);
+		this.writer = new Writer(); 
+	}
+
+	// update and delete category
+	public void updateCategory(Category category) {
+		bookShelf.updateCategory(category);
+		this.editmode = false;		
+	}
+	
+	public void deleteCategory() {
+		bookShelf.deleteCategory(category);
+		this.category = new Category(); 
+	}
+	
+	/**
+	 * Get the category id value and redirect the user to the category details
+	 * 
+	 * @param i
+	 */
+	public void getCategoryFromDatabase(long i) {
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_index.xhtml");
+		this.category = bookShelf.getCategory(i);
+
+	}
+	
+	/**
+	 * Get the writer id value and redirect the user to the category details
+	 * 
+	 * @param i
+	 */
+	public void getWriterFromDatabase(long i) {
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "writer_index.xhtml");
+		this.writer = bookShelf.getWriter(i);
+
+	}
+	
+	/**
+	 * Get the book id value and redirect the user to the category details
+	 * 
+	 * @param i
+	 */
+	public void getBookFromDatabase(long i) {
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "book_index.xhtml");
+
+		this.book = bookShelf.getBook(i);
+	}
+	
+	/**
+	 * Redirect the user to the category form
+	 */
+	public void createCategory(){
+		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_create.xhtml");
+	}
+	
+	// getters and setters
+	public Set<Book> getBooks() {
+		return bookShelf.getBooks();
+	}
+
+	public Book getBook() {
+		return this.book;
+	}
+	
+	public Set<Category> getCategories() {
+		return bookShelf.getCategories();
+	}
+	
+	public Category getCategory() {
+		return this.category;
+	}
+	
 	public Writer getWriter()
 	{
 		return this.writer;
@@ -122,56 +166,12 @@ public class AppBookBean {
 		this.writer = writer;
 	}
 	
-
-	public void deleteWriter(){
-		bookShelf.deleteWriter(this.writer);
-		this.writer = new Writer(); 
-	}
-
-	public Set<Category> getCategories() {
-		return bookShelf.getCategories();
+	public Set<Writer> getWriters() {
+		return bookShelf.getWriters();
 	}
 	
-	public Category getCategory() {
-		return this.category;
-	}
 	
-	public void updateCategory(Category category) {
-		bookShelf.updateCategory(category);
-		this.editmode = false;		
-	}
-	public void deleteCategory() {
-		bookShelf.deleteCategory(category);
-		this.category = new Category(); 
-	}
-	
-	public void getCategoryFromDatabase(long i) {
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_index.xhtml");
-		this.category = bookShelf.getCategory(i);
-
-	}
-	public void getWriterFromDatabase(long i) {
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "writer_index.xhtml");
-		this.writer = bookShelf.getWriter(i);
-
-	}
-	public void createCategory(){
-		FacesContext.getCurrentInstance().getApplication().getNavigationHandler().handleNavigation(FacesContext.getCurrentInstance(), null, "category_create.xhtml");
-	}
-
-	public void populate() {
-		bookShelf.populate();
-	}
-	
-	public String editBook(Book book){
-		return "book_edit.xhtml";
-	}
-	public List<String> getWritersSelectedId() {
-		return writersSelectedId;
-	}
-	public void setWritersSelectedId(List<String> writersSelectedId) {
-		this.writersSelectedId = writersSelectedId;
-	}
+	// get user selection in edition mode
 	public List<String> getCategoriesSelectedId() {
 		return categoriesSelectedId;
 	}
@@ -186,12 +186,45 @@ public class AppBookBean {
 	public void setBooksSelectedId(List<String> booksSelectedId) {
 		this.booksSelectedId = booksSelectedId;
 	}
+	
+	public List<String> getWritersSelectedId() {
+		return writersSelectedId;
+	}
 
-	public void deleteBook(){
-		bookShelf.deleteBook(this.book);
-		this.book = new Book(); 
-		
+	public void setWritersSelectedId(List<String> writersSelectedId) {
+		this.writersSelectedId = writersSelectedId;
 	}
 	
-
+	
+	
+	
+	/**
+	 * Activate the edition mode.
+	 */
+	public void edit() {
+	    editmode = true;
+	}
+	
+	/**
+	 * Deactivate the edition mode.
+	 */
+	public void cancelEdit(){
+		 editmode = false;
+	}
+	
+	/**
+	 * Flag to check edit mode 
+	 *  
+	 * @return
+	 */
+	public boolean isEditmode() {
+	    return editmode;
+	}
+	
+	/**
+	 * Call the method to populate the database
+	 */
+	public void populate() {
+		bookShelf.populate();
+	}
 }

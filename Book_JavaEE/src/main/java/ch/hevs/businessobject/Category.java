@@ -61,7 +61,7 @@ public class Category {
 	/**
 	 * Gets the category name.
 	 *  
-	 * @return String  the name of the category
+	 * @return the name of the category
 	 */
 	public String getNameCategory() {
 		return nameCategory;
@@ -77,15 +77,30 @@ public class Category {
 		this.nameCategory = nameCategory;
 	}
 	
+	/**
+	 * Get all books with this category
+	 * 
+	 * @return books all books
+	 */
 	public Set<Book> getBooks() {
 		return books;
 	}
 	
+	/**
+	 * Add a new book to the category
+	 * 
+	 * @param book
+	 */
 	public void addBook(Book book) {
 		this.books.add(book);
 		//book.addCategory(this);
 	}
 	
+	/**
+	 * Remove a book from the category
+	 * 
+	 * @param book
+	 */
 	public void removeBook(Book book) {
 		this.books.remove(book);
 		//book.removeCategory(this);

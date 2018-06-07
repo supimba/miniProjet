@@ -9,16 +9,20 @@ import java.util.Set;
 import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
-import javax.persistence.Query;
 
 import ch.hevs.businessobject.Address;
 import ch.hevs.businessobject.Book;
 import ch.hevs.businessobject.Category;
 import ch.hevs.businessobject.Writer;
+
+/**
+ * Stateful EJB to manage user request
+ *
+ */
 
 @Stateful
 public class BookShelfBean implements BookShelf {
@@ -26,6 +30,7 @@ public class BookShelfBean implements BookShelf {
 	@PersistenceContext(type = PersistenceContextType.EXTENDED, name = "BookShelfPU")
 	private EntityManager em;
 
+	// specific request for entity Book
 	@Override
 	public Set<Book> getBooks() {
 		return new HashSet<Book>(em.createQuery("FROM Book").getResultList());
@@ -36,13 +41,11 @@ public class BookShelfBean implements BookShelf {
 		return (Book) em.createQuery("FROM Book b WHERE b.id=:id").setParameter("id", id).getSingleResult();
 	}
 
-
 	@Override
 	public void insertBook(Book book) {
 		em.merge(book); 
 	}
 	
-
 	@Override
 	public void updateBook(Book book) {		
 		em.persist(book);
@@ -53,6 +56,7 @@ public class BookShelfBean implements BookShelf {
 		em.remove(em.contains(book) ? book : em.merge(book));
 	}
 
+	// specific request for entity Writer
 	@Override
 	public Set<Writer> getWriters() {
 		return new HashSet<Writer>(em.createQuery("FROM Writer").getResultList());
@@ -84,7 +88,7 @@ public class BookShelfBean implements BookShelf {
 		
 	}
 	
-	
+	// Specific request for entity Category
 	@Override
 	public Set<Category> getCategories() {
 		return new HashSet<Category>(em.createQuery("FROM Category").getResultList());
@@ -114,6 +118,9 @@ public class BookShelfBean implements BookShelf {
 		em.remove(em.contains(category) ? category : em.merge(category));
 		
 	}
+	
+	
+	//method to populate the database.
 
 	@TransactionAttribute(value =TransactionAttributeType.REQUIRED)
 	@Override
