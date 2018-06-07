@@ -4,93 +4,151 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+		xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
+	
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
 		<div class="col col-5 overflow">
 			<ui:repeat var="w" value="#{AppBookBean.writers.toArray()}">
-					<h:form>
-							<h:commandLink
-								class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
-								type="submit" action="#{AppBookBean.getWriterFromDatabase(w.id)}">
+				<h:form>
+					<h:commandLink
+						class=" mt-1 mb-1 btn btn-block btn-outline-primary btn-sm"
+						type="submit" action="#{AppBookBean.getWriterFromDatabase(w.id)}">
 									#{w.firstname} #{w.lastname}
-							</h:commandLink>
-						</h:form>
+					</h:commandLink>
+				</h:form>
 			</ui:repeat>
-			
+
 			<h:form>
-				<h:commandButton value="Create writer" class="btn btn-warning" type="submit" action="#{WriterBean.createWriter}"> </h:commandButton>
+				<h:commandButton value="Create writer" class="btn btn-warning"
+					type="submit" action="#{WriterBean.createWriter}">
+				</h:commandButton>
 			</h:form>
 		</div>
-		
+
 		<div class="col col-5 overflow">
-		<h:panelGroup rendered="#{AppBookBean.writer.firstname!=null}">
-		<h:form>
-				<h4 class="mt-2">
-				
-				<h:outputText value="#{AppBookBean.writer.name}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputText class="form-control" value="#{AppBookBean.writer.firstname}" rendered="#{AppBookBean.editmode}" />
-				<h:inputText class="form-control" value="#{AppBookBean.writer.lastname}" rendered="#{AppBookBean.editmode}" />
-				</h4>
-				<p>
-					<b class="mt-2 mb-2">Biography</b>
-				</p>
-				<p>
-				<h:outputText value="#{AppBookBean.writer.biography}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputTextarea class="form-control" value="#{AppBookBean.writer.biography}" rendered="#{AppBookBean.editmode}" />
-				
-				</p>
-				<p>
-					<b class="mt-2 mb-2">Date of Birth</b>
-				</p>
-				<p>
-				<h:outputText value="#{AppBookBean.writer.birthday}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputText class="form-control" value="#{AppBookBean.writer.birthday}" converter="dateConverter" rendered="#{AppBookBean.editmode}" />
-				
-				</p>
-				<p>
-					<b class="mt-2 mb-2">Address</b>
-				</p>
-				
-				<p>
-				<h:outputText value="#{AppBookBean.writer.address.street}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputText class="form-control" value="#{AppBookBean.writer.address.street}" rendered="#{AppBookBean.editmode}" />
-				<h:outputText value="#{AppBookBean.writer.address.city}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputText class="form-control" value="#{AppBookBean.writer.address.city}" rendered="#{AppBookBean.editmode}" />
-				<h:outputText value="#{AppBookBean.writer.address.postalCode}" rendered="#{not AppBookBean.editmode}" />
-				<h:inputText class="form-control" value="#{AppBookBean.writer.address.postalCode}" rendered="#{AppBookBean.editmode}" />
-				</p>
-				
-				<p>
-					<ui:repeat var="b"
-						value="#{AppBookBean.writer.books.toArray()}" varStatus="status">
-				
-			
+			<h:panelGroup rendered="#{AppBookBean.writer.firstname!=null}">
+				<h:form>
+					<h4 class="mt-2">
+
+						<h:outputText value="#{AppBookBean.writer.name}"
+							rendered="#{not AppBookBean.editmode}" />
+						<h:message for="firstname" style="color:red" />
+						<h:inputText id="firstname"class="form-control"
+							value="#{AppBookBean.writer.firstname}"
+							rendered="#{AppBookBean.editmode}"
+							required="true" requiredMessage="Required" />
+													
+							<h:message for="lastname" style="color:red" />
+						<h:inputText id="lastname" class="form-control"
+							value="#{AppBookBean.writer.lastname}"
+							rendered="#{AppBookBean.editmode}"
+							required="true" requiredMessage="Required" />
+					</h4>
+					<p>
+						<b class="mt-2 mb-2">Biography</b>
+
+						<h:outputText value="#{AppBookBean.writer.biography}"
+							rendered="#{not AppBookBean.editmode}"
+							required="true" requiredMessage="Required" />
+														<h:message for="bio" style="color:red" />
 							
-						
-						<h:commandLink
-								class="btn btn-outline-primary btn-sm"
-								type="submit" rendered="#{not AppBookBean.editmode}" action="#{AppBookBean.getBookFromDatabase(b.id)}">#{b.title}
+						<h:inputTextarea id="bio" class="form-control"
+							value="#{AppBookBean.writer.biography}"
+							rendered="#{AppBookBean.editmode}"
+							required="true" requiredMessage="Required" />
+
+					</p>
+					<p>
+						<b class="mt-2 mb-2">Date of Birth</b>
+
+						<h:outputText value="#{AppBookBean.writer.birthday}"
+							rendered="#{not AppBookBean.editmode}"
+							required="true" requiredMessage="Required" />
+														<h:message for="date" style="color:red" />
+							
+						<h:inputText id="dob" t:type="date" class="form-control"
+							value="#{AppBookBean.writer.birthday}" converter="dateConverter"
+							rendered="#{AppBookBean.editmode}"
+							required="true" requiredMessage="Required">
+													<f:convertDateTime pattern="yyyy-MM-dd" />
+							</h:inputText>
+
+
+						<b class="mt-2 mb-2">Address</b>
+
+
+						<h:outputText value="#{AppBookBean.writer.address.street}"
+							rendered="#{not AppBookBean.editmode}" 
+							required="true" requiredMessage="Required"/>
+														<h:message for="street" style="color:red" />
+							
+						<h:inputText id="street" class="form-control"
+							value="#{AppBookBean.writer.address.street}"
+							rendered="#{AppBookBean.editmode}" 
+							required="true" requiredMessage="Required"/>
+						<h:outputText value="#{AppBookBean.writer.address.city}"
+							rendered="#{not AppBookBean.editmode}"
+							required="true" requiredMessage="Required" />
+														<h:message for="city" style="color:red" />
+							
+						<h:inputText id="city" class="form-control"
+							value="#{AppBookBean.writer.address.city}"
+							rendered="#{AppBookBean.editmode}"
+							required="true" requiredMessage="Required" />
+						<h:outputText value="#{AppBookBean.writer.address.postalCode}"
+							rendered="#{not AppBookBean.editmode}" 
+							required="true" requiredMessage="Required"/>
+														<h:message for="npa" style="color:red" />
+							
+						<h:inputText id="npa" class="form-control"
+							value="#{AppBookBean.writer.address.postalCode}"
+							rendered="#{AppBookBean.editmode}"
+							required="true" requiredMessage="Required" />
+					</p>
+
+					<p>
+						<ui:repeat var="b" value="#{AppBookBean.writer.books.toArray()}"
+							varStatus="status">
+
+
+
+
+							<h:commandLink class="btn btn-outline-primary btn-sm"
+								type="submit" rendered="#{not AppBookBean.editmode}"
+								action="#{AppBookBean.getBookFromDatabase(b.id)}">#{b.title}
 								 
 							</h:commandLink>
-							
-					</ui:repeat>
-					<h:selectManyListbox class="form-control" value="#{AppBookBean.booksSelectedId}" rendered="#{AppBookBean.editmode}">
-						<f:selectItems value="#{AppBookBean.books}" var="book" itemValue="#{book.id}" itemLabel="#{book.title}" ></f:selectItems>
-					</h:selectManyListbox>
-				</p>
-					<h:commandButton class="btn btn-success" value="Save" action="#{AppBookBean.updateWriter(AppBookBean.writer)}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
-		</h:form>
-						<h:form>
-					<h:commandButton class="btn btn-success"  value="Edit" action="#{AppBookBean.edit}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
+
+						</ui:repeat>
+						<h:selectManyListbox class="form-control"
+							value="#{AppBookBean.booksSelectedId}"
+							rendered="#{AppBookBean.editmode}">
+							<f:selectItems value="#{AppBookBean.books}" var="book"
+								itemValue="#{book.id}" itemLabel="#{book.title}"></f:selectItems>
+						</h:selectManyListbox>
+					</p>
+					<h:commandButton class="btn btn-success" value="Save"
+						action="#{AppBookBean.updateWriter(AppBookBean.writer)}"
+						rendered="#{AppBookBean.editmode}"></h:commandButton>
 				</h:form>
 				<h:form>
-					<h:commandButton class="btn btn-danger"  value="Delete" action="#{AppBookBean.deleteWriter}" rendered="#{not AppBookBean.editmode}" ></h:commandButton>
+					<h:commandButton class="btn btn-success" value="Edit"
+						action="#{AppBookBean.edit}"
+						rendered="#{not AppBookBean.editmode}"></h:commandButton>
 				</h:form>
 				<h:form>
-					<h:commandButton class="btn btn-danger"  value="Cancel" action="#{AppBookBean.cancelEdit}" rendered="#{AppBookBean.editmode}" ></h:commandButton>
+					<h:commandButton class="btn btn-danger" value="Delete"
+						action="#{AppBookBean.deleteWriter}"
+						rendered="#{not AppBookBean.editmode}"></h:commandButton>
 				</h:form>
-				</h:panelGroup>
+				<h:form>
+					<h:commandButton class="btn btn-danger" value="Cancel"
+						action="#{AppBookBean.cancelEdit}"
+						rendered="#{AppBookBean.editmode}"></h:commandButton>
+				</h:form>
+			</h:panelGroup>
 		</div>
 	</ui:define>
 </ui:composition>

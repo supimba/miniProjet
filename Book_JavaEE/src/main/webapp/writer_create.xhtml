@@ -5,96 +5,80 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
 
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
 		<div class="col col-10 overflow">
-				<h3>Add a writer</h3>
-				<h:form>
-					<p>
-						<b class="mt-2 mb-2">First name</b>
-					</p>
-					<h:inputText class="form-control" value="#{WriterBean.writer.firstname}" required="true"
-						size="20"
-						maxlength="60" />
+			<h3>Add a writer</h3>
+			<h:form>
+				<p>
+					<b class="mt-2 mb-2">First name</b>
+					<h:message for="firstname" style="color:red" />
+					<h:inputText id="firstname" class="form-control"
+						value="#{WriterBean.writer.firstname}" required="true" size="20"
+						maxlength="60" requiredMessage="Required" />
+				</p>
+				<p>
+					<b class="mt-2 mb-2">Last name</b>
 
-
-
-					<p>
-						<b class="mt-2 mb-2">Last name</b>
-					</p>
-
-					<h:inputText class="form-control" value="#{WriterBean.writer.lastname}" required="true"
-						size="20" maxlength="60" />
-
-
-					<p>
-						<b class="mt-2 mb-2">Biography</b>
-					</p>
-
-					<h:inputTextarea class="form-control" value="#{WriterBean.writer.biography}"
-						required="true">
+					<h:message for="lastname" style="color:red" />
+					<h:inputText id="lastname" class="form-control"
+						value="#{WriterBean.writer.lastname}" required="true" size="20"
+						maxlength="60" requiredMessage="Required" />
+				</p>
+				<p>
+					<b class="mt-2 mb-2">Biography</b>
+				<h:message for="bio" style="color:red" />
+					<h:inputTextarea id="bio" class="form-control"
+						value="#{WriterBean.writer.biography}" required="true" requiredMessage="Required">
 					</h:inputTextarea>
+				</p>
+				<p>
+				<b class="mt-2 mb-2">Birthday</b>
+				<h:message for="dob" style="color:red" />
+					<h:inputText id="dob" t:type="date" class="form-control"
+						value="#{WriterBean.writer.birthday}" required="true"  requiredMessage="Required"
+						converter="dateConverter" size="20" maxlength="60">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:inputText>
+				</p>
+				<p>
+					<b class="mt-2 mb-2">Genre</b>
+				<h:message for="genre" style="color:red" />
 
+					<h:inputText id="genre" class="form-control"
+						value="#{WriterBean.writer.genre}" required="true" size="20"
+						maxlength="60"  requiredMessage="Required" />
+				</p>
+				<p>
+					<b class="mt-2 mb-2">City</b>
 
-
-
-
-					<p>
-						<b class="mt-2 mb-2">Birthday</b>
-					</p>
-					<h:inputText class="form-control" value="#{WriterBean.writer.birthday}"  required="true" converter="dateConverter"
+					<h:message for="city" style="color:red" />
+					<h:inputText id="city" class="form-control"
+						value="#{WriterBean.writer.address.city}" required="true"  requiredMessage="Required"
 						size="20" maxlength="60" />
-		
-												
+				</p>
+				<p>
+					<b class="mt-2 mb-2">Postal code</b>
+					<h:message for="npa" style="color:red" />
+					<h:inputText id="npa" class="form-control"
+						value="#{WriterBean.writer.address.postalCode}" required="true"  requiredMessage="Required"
+						size="20" maxlength="60" />
+				</p>
+				<p>
+					<b class="mt-2 mb-2">Street</b>
+					<h:message for="street" style="color:red" />
 
-
-
-					<p>
-						<b class="mt-2 mb-2">Genre</b>
-					</p>
-					<h:inputText class="form-control" value="#{WriterBean.writer.genre}" required="true"
-						size="20"
-						maxlength="60" />
-
-
-
-
-					<p>
-						<b class="mt-2 mb-2">City</b>
-					</p>
-					<h:inputText class="form-control" value="#{WriterBean.writer.address.city}"
-						required="true"
-						 size="20"
-						maxlength="60" />
-
-
-		
-						<p>
-							<b class="mt-2 mb-2">Postal code</b>
-						</p>
-
-						<h:inputText 
-						class="form-control"
-						value="#{WriterBean.writer.address.postalCode}"
-							required="true"
-							
-							size="20" maxlength="60" />
-
-						<p>
-							<b class="mt-2 mb-2">Street</b>
-						</p>
-
-						<h:inputText class="form-control" value="#{WriterBean.writer.address.street}"
-							required="true"
-							
-							size="20" maxlength="60" />
-
-						<h:commandButton class="btn btn-success" value="Create"
-							action="#{WriterBean.insertWriter(WriterBean.writer)}"></h:commandButton>
-				</h:form>
-			</div>
+					<h:inputText id="street" class="form-control"
+						value="#{WriterBean.writer.address.street}" required="true"  requiredMessage="Required"
+						size="20" maxlength="60" />
+					<h:commandButton class="btn btn-success" value="Create"
+						action="#{WriterBean.insertWriter(WriterBean.writer)}"></h:commandButton>
+				</p>
+			</h:form>
+		</div>
 	</ui:define>
 </ui:composition>
 </html>
