@@ -46,6 +46,7 @@
 					<b class="mt-2 mb-2"> ISBN </b></p>
 					<h:outputText class="small" value="#{AppBookBean.book.isbn}"
 							rendered="#{not AppBookBean.editmode}" />
+													<h:message style="color:red;"  for="isbn"></h:message>
 							
 					<h:inputText id="isbn" class="form-control"
 							value="#{AppBookBean.book.isbn}"

@@ -5,8 +5,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-		xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
-	
+	xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
+
 <ui:composition template="/WEB-INF/templates/BasicTemplate.xhtml">
 	<ui:define name="content">
 		<div class="col col-5 overflow">
@@ -35,77 +35,77 @@
 						<h:outputText value="#{AppBookBean.writer.name}"
 							rendered="#{not AppBookBean.editmode}" />
 						<h:message for="firstname" style="color:red" />
-						<h:inputText id="firstname"class="form-control"
+						<h:inputText id="firstname" class="form-control"
 							value="#{AppBookBean.writer.firstname}"
-							rendered="#{AppBookBean.editmode}"
-							required="true" requiredMessage="Required" />
-													
-							<h:message for="lastname" style="color:red" />
+							rendered="#{AppBookBean.editmode}" required="true"
+							requiredMessage="Required" />
+
+						<h:message for="lastname" style="color:red" />
 						<h:inputText id="lastname" class="form-control"
 							value="#{AppBookBean.writer.lastname}"
-							rendered="#{AppBookBean.editmode}"
-							required="true" requiredMessage="Required" />
+							rendered="#{AppBookBean.editmode}" required="true"
+							requiredMessage="Required" />
 					</h4>
 					<p>
 						<b class="mt-2 mb-2">Biography</b>
-
+					</p>
+					<p>
 						<h:outputText value="#{AppBookBean.writer.biography}"
-							rendered="#{not AppBookBean.editmode}"
-							required="true" requiredMessage="Required" />
-														<h:message for="bio" style="color:red" />
-							
+							rendered="#{not AppBookBean.editmode}" required="true"
+							requiredMessage="Required" />
+						<h:message for="bio" style="color:red" />
+
 						<h:inputTextarea id="bio" class="form-control"
 							value="#{AppBookBean.writer.biography}"
-							rendered="#{AppBookBean.editmode}"
-							required="true" requiredMessage="Required" />
+							rendered="#{AppBookBean.editmode}" required="true"
+							requiredMessage="Required" />
 
 					</p>
 					<p>
 						<b class="mt-2 mb-2">Date of Birth</b>
-
+					</p>
+					<p>
 						<h:outputText value="#{AppBookBean.writer.birthday}"
-							rendered="#{not AppBookBean.editmode}"
-							required="true" requiredMessage="Required" />
-														<h:message for="date" style="color:red" />
-							
+							rendered="#{not AppBookBean.editmode}" required="true"
+							requiredMessage="Required" />
+						<h:message for="date" style="color:red" />
+
 						<h:inputText id="dob" t:type="date" class="form-control"
 							value="#{AppBookBean.writer.birthday}" converter="dateConverter"
-							rendered="#{AppBookBean.editmode}"
-							required="true" requiredMessage="Required">
-													<f:convertDateTime pattern="yyyy-MM-dd" />
-							</h:inputText>
+							rendered="#{AppBookBean.editmode}" required="true"
+							requiredMessage="Required">
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+						</h:inputText>
 
-
+					<p>
 						<b class="mt-2 mb-2">Address</b>
-
-
+</p>
+					</p>
+					<p>
 						<h:outputText value="#{AppBookBean.writer.address.street}"
-							rendered="#{not AppBookBean.editmode}" 
-							required="true" requiredMessage="Required"/>
-														<h:message for="street" style="color:red" />
-							
+							rendered="#{not AppBookBean.editmode}" /><br></br>
+						<h:message for="street" style="color:red" />
+
 						<h:inputText id="street" class="form-control"
 							value="#{AppBookBean.writer.address.street}"
-							rendered="#{AppBookBean.editmode}" 
-							required="true" requiredMessage="Required"/>
+							rendered="#{AppBookBean.editmode}" required="true"
+							requiredMessage="Required" />
 						<h:outputText value="#{AppBookBean.writer.address.city}"
-							rendered="#{not AppBookBean.editmode}"
-							required="true" requiredMessage="Required" />
-														<h:message for="city" style="color:red" />
-							
+							rendered="#{not AppBookBean.editmode}" /><br></br>
+						<h:message for="city" style="color:red" />
+
 						<h:inputText id="city" class="form-control"
 							value="#{AppBookBean.writer.address.city}"
-							rendered="#{AppBookBean.editmode}"
-							required="true" requiredMessage="Required" />
+							rendered="#{AppBookBean.editmode}" required="true"
+							requiredMessage="Required" />
 						<h:outputText value="#{AppBookBean.writer.address.postalCode}"
-							rendered="#{not AppBookBean.editmode}" 
-							required="true" requiredMessage="Required"/>
-														<h:message for="npa" style="color:red" />
-							
+							rendered="#{not AppBookBean.editmode}" /><br></br>
+						<h:message for="npa" style="color:red" />
+
 						<h:inputText id="npa" class="form-control"
 							value="#{AppBookBean.writer.address.postalCode}"
-							rendered="#{AppBookBean.editmode}"
-							required="true" requiredMessage="Required" />
+							rendered="#{AppBookBean.editmode}" required="true"
+							requiredMessage="Required" />
 					</p>
 
 					<p>

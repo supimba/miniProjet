@@ -15,6 +15,7 @@
 			<h:form>
 				<p>
 					<b class="mt-2 mb-2">First name</b>
+					<br></br>
 					<h:message for="firstname" style="color:red" />
 					<h:inputText id="firstname" class="form-control"
 						value="#{WriterBean.writer.firstname}" required="true" size="20"
@@ -22,7 +23,7 @@
 				</p>
 				<p>
 					<b class="mt-2 mb-2">Last name</b>
-
+					<br></br>
 					<h:message for="lastname" style="color:red" />
 					<h:inputText id="lastname" class="form-control"
 						value="#{WriterBean.writer.lastname}" required="true" size="20"
@@ -30,6 +31,7 @@
 				</p>
 				<p>
 					<b class="mt-2 mb-2">Biography</b>
+					<br></br>
 				<h:message for="bio" style="color:red" />
 					<h:inputTextarea id="bio" class="form-control"
 						value="#{WriterBean.writer.biography}" required="true" requiredMessage="Required">
@@ -37,6 +39,7 @@
 				</p>
 				<p>
 				<b class="mt-2 mb-2">Birthday</b>
+				<br></br>
 				<h:message for="dob" style="color:red" />
 					<h:inputText id="dob" t:type="date" class="form-control"
 						value="#{WriterBean.writer.birthday}" required="true"  requiredMessage="Required"
@@ -46,6 +49,7 @@
 				</p>
 				<p>
 					<b class="mt-2 mb-2">Genre</b>
+					<br></br>
 				<h:message for="genre" style="color:red" />
 
 					<h:inputText id="genre" class="form-control"
@@ -54,7 +58,7 @@
 				</p>
 				<p>
 					<b class="mt-2 mb-2">City</b>
-
+<br></br>
 					<h:message for="city" style="color:red" />
 					<h:inputText id="city" class="form-control"
 						value="#{WriterBean.writer.address.city}" required="true"  requiredMessage="Required"
@@ -62,6 +66,7 @@
 				</p>
 				<p>
 					<b class="mt-2 mb-2">Postal code</b>
+					<br></br>
 					<h:message for="npa" style="color:red" />
 					<h:inputText id="npa" class="form-control"
 						value="#{WriterBean.writer.address.postalCode}" required="true"  requiredMessage="Required"
@@ -69,6 +74,7 @@
 				</p>
 				<p>
 					<b class="mt-2 mb-2">Street</b>
+					<br></br>
 					<h:message for="street" style="color:red" />
 
 					<h:inputText id="street" class="form-control"
